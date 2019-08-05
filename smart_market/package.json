@@ -6,7 +6,7 @@
     "async": "latest",
     "basic-auth-connect": "latest",
     "bcrypt-nodejs": "0.0.3",
-    "body-parser": "~1.13.2",
+    "body-parser": "^1.19.0",
     "client-sessions": "latest",
     "connect": "latest",
     "connect-flash": "latest",
@@ -14,7 +14,7 @@
     "dateformat": "latest",
     "debug": "~2.6.9",
     "ejs": "~2.5.5",
-    "express": "~4.13.1",
+    "express": "^4.17.1",
     "express-mailer": "^0.3.0",
     "express-session": "latest",
     "fs-extra": "latest",
@@ -35,7 +35,7 @@
     "passport-local": "latest",
     "pm2": "latest",
     "request": "latest",
-    "serve-favicon": "~2.3.0",
+    "serve-favicon": "^2.5.0",
     "simple-encryptor": "latest",
     "underscore": "latest"
   }
