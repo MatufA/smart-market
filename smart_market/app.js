@@ -28,7 +28,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 var MongoClient  = require('mongodb').MongoClient;
 var configDB = require('./config/database.js');
 //configuration ===============================================================
-const client = new MongoClient(configDB.url, {'useNewUrlParser': configDB.useNewUrlParser}); // connect to our database
+const client = new MongoClient(configDB.url, {useNewUrlParser: true}); // connect to our database
+
 client.connect(err => {
     const collection = client.db("test").collection("devices");
     // perform actions on the collection object
@@ -36,6 +37,26 @@ client.connect(err => {
   });
 
 require('./config/passport')(passport); // pass passport for configuration
+
+
+
+MongoClient.connect(configDB.url,{useNewUrlParser: true} , function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  var myobj = { name: "Adiel", address: "The king 37" };
+  
+  dbo.collection("customers").insertOne(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");
+    db.close();
+  });
+});
+
+
+
+
+
+
 
 //set up our express application
 app.use(morgan('dev')); // log every request to the console
