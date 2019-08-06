@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
+    "assert": "^2.0.0",
     "async": "latest",
     "basic-auth-connect": "latest",
     "bcrypt-nodejs": "0.0.3",
@@ -22,6 +23,7 @@
     "md5": "latest",
     "mime": "latest",
     "mongodb": "^3.3.0-beta2",
+    "mongodb-uri": "^0.9.7",
     "mongoose": "latest",
     "morgan": "~1.9.1",
     "multer": "latest",
