@@ -25,6 +25,7 @@ services:
       - "9090:9090"   # HBase Thrift
       - "8080:8080"   # HBase Rest
       - "7077:7077"   # Spark Master
+      - "9092:9092"   # Kafka Broker
     tty: true
     stdin_open: true
     volumes: 

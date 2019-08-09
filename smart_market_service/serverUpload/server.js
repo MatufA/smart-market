@@ -4,6 +4,7 @@ const bodyParser= require('body-parser')
 const multer = require('multer');
 var path = require('path');
 var fs = require('fs');
+const request = require('request')
 
 //CREATE EXPRESS APP
 const app = express();
@@ -43,6 +44,7 @@ app.post('/uploadmultiple', upload.array('myFiles', 12), (req, res, next) => {
     return next(error)
   }
 
-    res.sendFile(__dirname + '/index.html')
- 
+  res.sendFile(__dirname + '/index.html')
+  for (let file in req.files)
+    fs.createReadStream(file).pipe(request.post('http://localhost:5000//api/v1/hdfs/upload'))
 })
