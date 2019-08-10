@@ -1,3 +1,5 @@
+.vscode
+*/serverUploadFiles/
 # Logs
 logs
 *.log
