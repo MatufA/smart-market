@@ -4,7 +4,11 @@ services:
     image: cloudera/quickstart:latest
     privileged: true
     hostname: quickstart.cloudera
-    command: /usr/bin/docker-quickstart
+    command: 
+      - /usr/bin/docker-quickstart
+      - /home/cloudera/cloudera-manager --express --force
+      - yum install -y wget
+      - cd /etc/yum.repos.d && wget http://archive.cloudera.com/kafka/redhat/6/x86_64/kafka/ && sudo yum clean all
     ports:
       - "8020:8020"   # HDFS 
       - "8022:22"     # SSH
@@ -25,7 +29,8 @@ services:
       - "9090:9090"   # HBase Thrift
       - "8080:8080"   # HBase Rest
       - "7077:7077"   # Spark Master
-      - "9092:9092"   # Kafka Broker
+      - "18080:18080" # Spark History 
+      - "9092:9092"   # Kafka
     tty: true
     stdin_open: true
     volumes: 

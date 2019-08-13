@@ -3,7 +3,7 @@ const bigml = require('bigml')
 
 const conn = new bigml.BigML(process.env.BIGML_USERNAME, process.env.BIGML_API_KEY)
 
-module.exports.createAssociation = () => function(dataCsv){
+module.exports.createAssociation = function(dataCsv){
     var source = new bigml.Source(conn)
     source.create(dataCsv, function(error, sourceInfo) {
         if (!error && sourceInfo) {
@@ -26,7 +26,7 @@ module.exports.createAssociation = () => function(dataCsv){
     })
 }
 
-module.exports.getAssociation = () => function(resource){
+module.exports.getAssociation = function(resource){
     const model = new bigml.Association(conn)
     model.get(resource, function (error, res) {
         if (!error && res && res.code == 200) {
