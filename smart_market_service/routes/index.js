@@ -26,7 +26,6 @@ var storage = multer.diskStorage({
    
 var upload = multer({ storage: storage })
 
-
 // Uploading multiple files - files are stored in req.files
 router.post('/upload', upload.array('myFiles', 12), (req, res, next) => {
   const files = req.files

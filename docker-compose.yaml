@@ -4,11 +4,7 @@ services:
     image: cloudera/quickstart:latest
     privileged: true
     hostname: quickstart.cloudera
-    command: 
-      - /usr/bin/docker-quickstart
-      - /home/cloudera/cloudera-manager --express --force
-      - yum install -y wget
-      - cd /etc/yum.repos.d && wget http://archive.cloudera.com/kafka/redhat/6/x86_64/kafka/ && sudo yum clean all
+    command: /usr/bin/docker-quickstart
     ports:
       - "8020:8020"   # HDFS 
       - "8022:22"     # SSH
