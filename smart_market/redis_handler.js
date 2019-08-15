@@ -18,15 +18,15 @@ module.exports.addGroceries = (groceries) =>{
         return new Error(err.message)
     });
     
-    groceries.unshift('groceries'), function(err, reply) {
+    groceries.unshift('groceries') 
+    client.sadd(groceries ,function(err, reply) {
         if (err) throw new Error(error)
         console.log(reply); // num of groceries.
         return reply;
-    }
-    client.sadd(groceries);
+    })
 }
 
-module.exports.getGroceries = async function() {
+module.exports.getGroceries = async function(callback) {
     client.on('connect', function() {
         console.log('connected');
     });
@@ -38,7 +38,6 @@ module.exports.getGroceries = async function() {
     
     client.smembers('groceries', function(err, reply) {
         if (err) throw new Error(error)
-        
-        return reply;
+        callback(reply);
     });
 }

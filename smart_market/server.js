@@ -50,7 +50,10 @@ app.get('/graph', (req, res) => {
           view.label = '# of reciepts'
 
           //res.render('index.ejs', {collInfos: view, labels: result, gros : gros})
-          res.render('index.ejs', {collInfos: view, labels: result})
+          redisHandler.getGroceries(function(gros){
+            res.render('index.ejs', {collInfos: view, labels: result, gros : gros})
+          })
+          
       })
   })
 })
