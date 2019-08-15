@@ -22,7 +22,7 @@ module.exports.makeMainChart= async function (db, collectionsName){
     
     const collsLength = await Promise.all(promises)
     const dataView = {
-        label: collectionsName, // supermarket name
+        label: '', // supermarket name
         backgroundColor: 'rgb(169,226,138)',
         borderColor: 'rgb(169,226,138)',
         data: collsLength // number of reciepts  
