@@ -211,7 +211,6 @@ app.get('/', (req, res) => {
     labels.then(function(result){
         var dataView = mongoHandler.makeMainChart(db, result)
         
-
         dataView.then(function(view){
             
             var back = []
@@ -227,7 +226,5 @@ app.get('/', (req, res) => {
             //res.render('index.ejs', {collInfos: view, labels: result, gros : gros})
             res.render('index.ejs', {collInfos: view, labels: result})
         })
-    }) 
-    
-    
+    })
 })
