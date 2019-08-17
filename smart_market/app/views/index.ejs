@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    
+    <!-- CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=2">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="../../public/css/home.css">
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="bgimg w3-display-container w3-text-white">
+        <div class="w3-display-middle w3-jumbo">
+          <!-- <p>Hello <%= username %></p> -->
+          <p><%= title %></p>
+        </div>
+        <div class="w3-display-topleft w3-container w3-xlarge">
+          <p><button onclick="document.getElementById('Upload').style.display ='block'" class="w3-button w3-black">Upload File</button></p>
+          <p><form action="/graph"> <input type="submit" value="Graphs" class="w3-button w3-black"/> </form></p>
+        </div>
+      </div>
+      
+      <!-- Uploading receipts Modal -->
+      <div id="Upload" class="w3-modal" >
+      
+        <div class="w3-modal-content w3-animate-zoom" >
+      
+          <div class="w3-container w3-black w3-display-container">
+            <span onclick="document.getElementById('Upload').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+            <h1>Uploading receipts</h1>
+          </div>
+      
+          <div class="w3-container">
+              <div>Please select CSV, XML or JSON files only</div>
+              <br/>
+              <form action="http://localhost:5000/api/hdfs/upload"  enctype="multipart/form-data" method="POST" onsubmit="return checkFile();">
+                <input type="file" name="myFiles" id="myFiles" multiple accept=".csv,.json,.xml">
+                <input type="submit" value="submit"/>
+              </form>
+            <br/>
+          </div>
+      
+        </div>
+      </div>
+      
+      <!-- Graph Modal -->
+
+      <!-- Javascript -->
+      <script type="text/javascript" src="../../public/js/upload.js"></script>
   </body>
 </html>
