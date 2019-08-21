@@ -28,7 +28,6 @@ exports.home = function(req, res) {
 	 });
 }
 
-
 exports.signup = function(req, res) {
 	if (req.session.user) {
 		res.redirect('/home');
