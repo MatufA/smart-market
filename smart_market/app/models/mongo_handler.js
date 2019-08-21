@@ -1,4 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
+
 var db = MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, (err, database) => {
             if (err) return console.log(err)  
             db = database.db(process.env.MONGO_DB)
@@ -25,6 +26,7 @@ module.exports.makeMainChart= async function (collectionsName){
     })
     
     const collsLength = await Promise.all(promises)
+
     const dataView = {
         label: '', // supermarket name
         backgroundColor: 'rgb(169,226,138)',
@@ -45,4 +47,69 @@ const getCollectionsLength = async function (collectionName){
         })
     })
         return res;   
+}
+
+
+
+module.exports.getPricesBetweenDates = async function (from_date,to_date,product){
+    var from_date1 = from_date.split("-");
+    var to_date2 = to_date.split("-");
+    
+    // console.log(from_date1[0]) // year
+    // console.log(from_date1[1]) // month
+    // console.log(from_date1[2]) // day
+    const collNames = await this.getLabels(this.db)
+
+    const lable_view = []
+    const data_view = []
+
+    const res = new Promise(function (resolve, reject){
+
+        collNames.forEach(coll => {
+            db.collection(coll).find().toArray((err, result) => {
+                if (err)  reject(err)
+                result.forEach(element => {
+                    var date_in_reciepts = element.date.split("/"); //dateInReciepts[0] - day, dateInReciepts[1] - month, dateInReciepts[2] - year
+
+                        if(    (Number(date_in_reciepts[1]) >= Number(from_date1[1])) 
+                            && (Number(date_in_reciepts[1]) <= Number(to_date2[1])) 
+                            && (Number(date_in_reciepts[0]) >= Number(from_date1[2])) 
+                            && (Number(date_in_reciepts[0]) >= Number(to_date2[2]))     ){
+                                element.gros.forEach(prod => {
+                                    
+                                    if(prod.product_name === product){
+                                        lable_view.push(coll)
+                                        data_view.push(prod.price)
+                                        // console.log("======================================")
+                                        // console.log(lable_view) //gives good result
+                                        // console.log(data_view) //gives good result
+                                        // console.log("======================================")
+                                        
+                                    }
+
+                                })
+                    }
+                    
+                });
+                console.log("======================================")
+                console.log(lable_view) //kind of good i think
+                console.log(data_view) //kind of good i think
+                console.log("======================================")
+                return resolve(lable_view, data_view)
+
+            })
+            
+        });
+        
+    })
+    const dataView = {
+        label: '', 
+        backgroundColor: 'rgb(169,226,138)',
+        borderColor: 'rgb(169,226,138)',
+        data: data_view // ~~~~~~~~~ data_view is empy here ~~~~~~~~~  
+    }
+
+    console.log(data_view)
+    return dataView;
+    
 }

@@ -174,23 +174,55 @@ exports.makeQuotes = (req, res) => {
     
     ]
     
-    db.collection('Osher Ad').insertMany(r1 ,
-        // req.body,
-         (err, result) => {
-        if (err) return console.log(err)
-        console.log('saved to database')
+    // db.collection('Osher Ad').insertMany(r1 ,
+    //     // req.body,
+    //      (err, result) => {
+    //     if (err) return console.log(err)
+    //     console.log('saved to database')
   
-        var groceries = []
-        r1.forEach(function(gros) {
-            gros.gros.forEach(function(element) {
-                groceries.push(element.product_name)
-            });
-        })
-        // Adding gro
-        redisHandler.addGroceries(groceries)
-        res.redirect('/graph')  
+    //     var groceries = []
+    //     r1.forEach(function(gros) {
+    //         gros.gros.forEach(function(element) {
+    //             groceries.push(element.product_name)
+    //         });
+    //     })
+    //     // Adding gro
+    //     redisHandler.addGroceries(groceries)
+    //     res.redirect('/graph')  
+        
+    // })
+    const from_date = req.body.from
+    const to_date = req.body.to
+    const product = req.body.ccexpm
+
+    var getPricesInDates = mongoHandler.getPricesBetweenDates(from_date, to_date ,product)
+    
+    
+    getPricesInDates.then(function(lable_view, data_view){
+        
+        // var back = []
+        // random colors for chart
+        // for(var i = 0; i < prices.data.length; i++){
+        //     var backbackgd = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )'
+        //     back.push(backbackgd)
+        // }
+        // prices.backgroundColor = back
+        // prices.borderColor = back
+        // prices.label = '# of reciepts'
+
+        var dataView = {
+            label: product, // supermarket name
+            backgroundColor: 'rgb(169,226,138)',
+            borderColor: 'rgb(169,226,138)',
+            data: data_view
+        }
+        console.log(dataView)
+        
+        // res.render('graph.ejs', {prices: prices})
+       
         
     })
+    
     
     
   }
