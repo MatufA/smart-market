@@ -59,57 +59,42 @@ module.exports.getPricesBetweenDates = async function (from_date,to_date,product
     // console.log(from_date1[1]) // month
     // console.log(from_date1[2]) // day
     const collNames = await this.getLabels(this.db)
-
-    const lable_view = []
-    const data_view = []
-
     const res = new Promise(function (resolve, reject){
-
+        
         collNames.forEach(coll => {
             db.collection(coll).find().toArray((err, result) => {
-                if (err)  reject(err)
                 result.forEach(element => {
                     var date_in_reciepts = element.date.split("/"); //dateInReciepts[0] - day, dateInReciepts[1] - month, dateInReciepts[2] - year
+                    if(    (Number(date_in_reciepts[1]) >= Number(from_date1[1])) 
+                        && (Number(date_in_reciepts[1]) <= Number(to_date2[1])) 
+                        && (Number(date_in_reciepts[0]) >= Number(from_date1[2])) 
+                        && (Number(date_in_reciepts[0]) >= Number(to_date2[2]))     ){
+                            var lable_view = []
+                            var data_view = []
+                            element.gros.forEach(prod => {
+                                if (err)  
+                                    return reject(err)
+                                else if(prod.product_name === product){
+                                    lable_view.push(coll)
+                                    data_view.push(prod.price)
+                                }
 
-                        if(    (Number(date_in_reciepts[1]) >= Number(from_date1[1])) 
-                            && (Number(date_in_reciepts[1]) <= Number(to_date2[1])) 
-                            && (Number(date_in_reciepts[0]) >= Number(from_date1[2])) 
-                            && (Number(date_in_reciepts[0]) >= Number(to_date2[2]))     ){
-                                element.gros.forEach(prod => {
-                                    
-                                    if(prod.product_name === product){
-                                        lable_view.push(coll)
-                                        data_view.push(prod.price)
-                                        // console.log("======================================")
-                                        // console.log(lable_view) //gives good result
-                                        // console.log(data_view) //gives good result
-                                        // console.log("======================================")
-                                        
-                                    }
-
-                                })
+                            })
+                        return resolve(data_view)
                     }
-                    
                 });
-                console.log("======================================")
-                console.log(lable_view) //kind of good i think
-                console.log(data_view) //kind of good i think
-                console.log("======================================")
-                return resolve(lable_view, data_view)
-
             })
-            
         });
-        
     })
     const dataView = {
         label: '', 
         backgroundColor: 'rgb(169,226,138)',
         borderColor: 'rgb(169,226,138)',
-        data: data_view // ~~~~~~~~~ data_view is empy here ~~~~~~~~~  
+        data: res // ~~~~~~~~~ data_view is empy here ~~~~~~~~~  
     }
 
-    console.log(data_view)
-    return dataView;
+    console.log(res)
+
+    return(res);
     
 }

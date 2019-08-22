@@ -7,13 +7,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Login</title>
-
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="../../public/js/bootstrap.min.js">
         <link rel="stylesheet" href="../../public/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="../../public/css/style.css">
-
     </head>
 
     <body>
@@ -22,22 +20,22 @@
         <div class="top-content">
         	
             <div class="inner-bg">
-                <div class="container">
+                <div class="container" align="center">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong></strong> Login Form</h1>
+                            <h1><strong>Smart Market</strong> Login Form</h1>
                             <div class="description">
                             	
                             </div>
                         </div>
                     </div>
-                <div align="center">
-                    <div class="row" style="width: 25%;">
+                
+                    <div class="row" style="width: 21%;">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top" >
                         		<div class="form-top-left">
-                        			<h3>Login to our site</h3>
-                            		<p>Enter username and password to log on:</p>
+                        			<h3>Login to Smart Market</h3>
+                            		<p>Enter username & password:</p>
                         		</div>
                         		<div class="form-top-right">
                         			<i class="fa fa-key"></i>
@@ -59,21 +57,27 @@
                                 
 			                    <form role="form" action="/login" role="form" method="post" class="login-form" >
 			                    	<div class="form-group" >
-			                    		<label class="sr-only" for="form-username">Email:</label>
-			                        	<input type="text" name="email" required  placeholder="Email..." class="form-username form-control" id="email"style="margin-left: 2.3em;">
-			                        </div>
+			                    		<label class="sr-only" for="form-username">Email</label>
+			                        	<input type="text" name="email" required  placeholder="Email..." class="form-username form-control" id="email"style="margin-left: 2.6em;border-radius: 8px;">
+                                    </div>
+                                    
 			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Password:</label>
-			                        	<input type="password" required name="password" placeholder="Password..." class="form-password form-control" id="password">
-			                        </div>
-                                    <button type="submit" class="btn" style="width: 50%;margin-top: 0.5em;margin-left: 5em;border-radius: 10px;">Sign in!</button>
+			                        	<label class="sr-only" for="form-password">Password</label>
+			                        	<input type="password" required name="password" placeholder="Password..." class="form-password form-control" id="password"style="margin-left: 0.3em;border-radius: 8px;">
+                                    </div>
+                                    
+                                    <button type="submit" class="btn" style="width: 25%;margin-top: 0.5em;margin-left: 9em;border-radius: 10px;">Sign in!</button>
                                 </form>
+
                                 <form action="/signup"  role="form" method="get">
-                                    <button type="submit" class="btn" style="width: 50%;margin-top: 0.5em;margin-left: 5em;border-radius: 10px;">Sign up!</button>
+                                    <label class="sr-only" for="form-sign-up">Not register?</label>
+                                    <button type="submit" class="btn" style="width: 25%;margin-top: 0.5em;margin-left: 2em;border-radius: 10px;">Sign up!</button>
                                 </form>
+
 		                    </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 social-login">
                         	<h3>...or login with:</h3>
@@ -90,8 +94,8 @@
                         	</div>
                         </div>
                     </div>
-                </div>
-            </div> 
+
+                </div> 
             </div>
             
         </div>
