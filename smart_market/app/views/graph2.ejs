@@ -51,7 +51,6 @@
                                     
                                     <br>
                                     <label for="ccexpm">Product</label>
-
                                     <select id = "ccexpm" name = "ccexpm" style="border-radius: 10px; width: 160px;"">
                                         <optgroup label="Select Table">
                                                 <option value=""  >Select Grocery</option>
@@ -133,10 +132,10 @@
                             <script>
                                 var dataView = <%-JSON.stringify(collInfos)%>;
                                 var dataLabels = <%-JSON.stringify(labels)%>;
-                                var groceries = <%-JSON.stringify(gros)%>
-                                console.log(groceries);
+                                var groceries = <%-JSON.stringify(gros)%>;
+                                var prices = <%-JSON.stringify(prices)%>;
                                 
-                                // console.log(dataLabels)
+                                console.log(dataView)
                                 var ctx = document.getElementById('myChart').getContext('2d');
                                 var myChart = new Chart(ctx, {
                                     type: 'bar',

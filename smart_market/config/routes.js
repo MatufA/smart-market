@@ -25,5 +25,7 @@ module.exports = function (app, passport) {
 
     app.get('/graph', home.loggedIn, charts.makeChart);
     
-    app.post('/quotes', home.loggedIn, charts.makeQuotes);
+    //app.post('/quotes', home.loggedIn, charts.makeQuotes);
+
+    app.post('/graph2', home.loggedIn, charts.makeQuotes);
 }

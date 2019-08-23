@@ -93,7 +93,7 @@ module.exports.getPricesBetweenDates = async function (from_date,to_date,product
                     
                 element.gros.forEach(prod => {
                     if(prod.product_name === product){
-                        lable_view.push(elements)
+                        lable_view.push(element.name)
                         data_view.push(prod.price)     
                     }
                 })

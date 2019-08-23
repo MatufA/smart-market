@@ -199,8 +199,7 @@ app.post('/quotes', (req, res) => {
         res.redirect('/')  
         
     })
-    
-    
+ 
 })
 
 app.get('/', (req, res) => {
@@ -224,4 +223,11 @@ app.get('/', (req, res) => {
             res.render('index.ejs', {collInfos: view, labels: result})
         })
     })
+})
+
+
+app.post('/graph2', (req, res) => {
+    
+    charts.makeQuotes()
+ 
 })

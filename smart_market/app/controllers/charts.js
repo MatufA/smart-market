@@ -179,11 +179,34 @@ exports.makeQuotes = (req, res) => {
     const product = req.body.ccexpm
 
     var getPricesInDates = mongoHandler.getPricesBetweenDates(from_date, to_date ,product, function(grocs, price){
-        redisHandler.getGroceries(function(gros){
-            res.render('graph.ejs', {collInfos: price, labels: grocs, gros : gros})
-          })
+
+            const dataView = {
+                label: '', // supermarket name
+                backgroundColor: 'rgb(169,226,138)',
+                borderColor: 'rgb(169,226,138)',
+                data: grocs // number of reciepts  
+            }
+
+            var back = []
+            // random colors for chart
+            for(var i = 0; i < price.length; i++){
+                var backbackgd = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )'
+                back.push(backbackgd)
+            }
+
+            dataView.backgroundColor = back
+            dataView.borderColor = back
+            dataView.label = product
+
+            redisHandler.getGroceries(function(gros){
+                res.render('graph2.ejs', {collInfos: dataView, labels: grocs, gros : gros, prices : price})
+            })
+
+            // redisHandler.getGroceries(function(gros){
+            //   res.render('graph.ejs', {collInfos: view, labels: result, gros : gros})
+            // })
         
-        console.log(gros)
+        console.log(grocs)
         console.log(price)
     })
   }
