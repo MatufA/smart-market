@@ -34,8 +34,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, database) => {
 //     res.sendFile(__dirname + '/index.html')
 // })
 
-
-
 app.post('/quotes', (req, res) => {
     var r1 = [
         {
@@ -204,7 +202,6 @@ app.post('/quotes', (req, res) => {
     
     
 })
-
 
 app.get('/', (req, res) => {
     var labels = mongoHandler.getLabels(db)

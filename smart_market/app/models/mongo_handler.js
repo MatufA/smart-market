@@ -42,14 +42,22 @@ const getCollectionsLength = async function (collectionName){
         db.collection(collectionName).find().toArray((err, result) => {
             if (err) 
                 return reject(err)  
-            console.log(result.length)
             return resolve(result.length)
         })
     })
         return res;   
 }
 
-
+const getCollection = async function(collectionName) {
+    const res = new Promise(async function (resolve, reject){
+        db.collection(collectionName).find().toArray((err, result) => {
+            if (err)  
+                return reject(err)
+            return resolve(result)
+        })
+    })
+    return res
+}
 
 module.exports.getPricesBetweenDates = async function (from_date,to_date,product){
     var from_date1 = from_date.split("-");
@@ -58,50 +66,47 @@ module.exports.getPricesBetweenDates = async function (from_date,to_date,product
     // console.log(from_date1[0]) // year
     // console.log(from_date1[1]) // month
     // console.log(from_date1[2]) // day
-    const collNames = await this.getLabels(this.db)
-    const res = new Promise(function (resolve, reject){
-    var lable_view = []
-    var data_view = []
-        collNames.forEach(coll => {
-            db.collection(coll).find().toArray((err, result) => {
-                if (err)  return reject(err)
-                result.forEach(element => {
-                    var date_in_reciepts = element.date.split("/"); //dateInReciepts[0] - day, dateInReciepts[1] - month, dateInReciepts[2] - year
-                        if(    (Number(date_in_reciepts[1]) >= Number(from_date1[1])) 
-                            && (Number(date_in_reciepts[1]) <= Number(to_date2[1])) 
-                            && (Number(date_in_reciepts[0]) >= Number(from_date1[2])) 
-                            && (Number(date_in_reciepts[0]) >= Number(to_date2[2]))     ){
-                                
-                                element.gros.forEach(prod => {
-                                    if (err)  reject(err)
-                                    else if(prod.product_name === product){
-                                        lable_view.push(coll)
-                                        data_view.push(prod.price)
-                                        
-                                    }
+    let collNames = await this.getLabels(this.db)
+    collNames = collNames.filter( s => s != "ex_users");
+    console.log(collNames)
+   
+    const res = await new Promise(async function (resolve, reject){
+        var lable_view = []
+        var data_view = []
 
-                                })
-                    }
-                });
+        const promises = collNames.map(async coll => {
+            let collection = await getCollection(coll)
+            return collection
+        })
 
+        const collections = await Promise.all(promises)
+        console.log(collections)
+
+        if (!Array.isArray(collections) || !collections.length)
+            return reject(new Error('Empty list'))
+
+        collections.forEach(elements =>{
+            elements.forEach(element => {
+                console.log(element)
+                let date_in_reciepts = element.date.split("/"); //dateInReciepts[0] - day, dateInReciepts[1] - month, dateInReciepts[2] - year
+                if( (Number(date_in_reciepts[1]) >= Number(from_date1[1])) 
+                    && (Number(date_in_reciepts[1]) <= Number(to_date2[1])) 
+                    && (Number(date_in_reciepts[0]) >= Number(from_date1[2])) 
+                    && (Number(date_in_reciepts[0]) >= Number(to_date2[2])) ){
+                        
+                    element.gros.forEach(prod => {
+                        if(prod.product_name === product){
+                            lable_view.push(elements)
+                            data_view.push(prod.price)     
+                        }
+                    })
+                }
             })
-        });
+        })
+
         console.log(lable_view)
         console.log(data_view)
         return resolve(data_view,lable_view)
     })
-
-    // const dataView = {
-    //     label: '', 
-    //     backgroundColor: 'rgb(169,226,138)',
-    //     borderColor: 'rgb(169,226,138)',
-    //     data: res // ~~~~~~~~~ data_view is empy here ~~~~~~~~~  Are you here?
-    // }
-    //res -> אמור להיות רשימה של מוצרים עם המחירים שלהם, כמו בהדפסה
-    //[ 'Osher Ad', 'Shufersal' ] ------> lable_view
-    //[ 23.99, 24.9 ] -------> data_view
-    // res ----->[lable_view, data_view ]
-    // console.log(res)
     return(res);
-    
 }
