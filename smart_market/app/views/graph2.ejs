@@ -13,7 +13,7 @@
     .row #column2{ 
             float: left; 
             width: 500px; 
-            padding: 80px 40px 80px 40px; 
+            padding: 20px 40px 20px 40px; 
     } 
     </style> 
     <head>  
@@ -30,9 +30,17 @@
     <body>
         <h1 align="center" style="margin-top: 0.5em;" ><strong>Smart Market</strong></h1>
         <h3 align="center">Filtering data</h3>
+        
         <section class="container" id="section-2"> 
                 <div class="row"> 
                     <div id="column1"> 
+
+                        <div class = "bottoms">
+                                <p><form action="/" align="left"> <input type="submit" value="Back Home" class="w3-button w3-black" style="border-radius: 12px;float:left; margin-right:5px;"/> </form>
+                                <form action="/graph" align="right"> <input type="submit" value="#reciepts Graph" class="w3-button w3-black" style="border-radius: 12px;"/> </form></p>
+                                <!-- </div>
+                            </div> -->
+                        </div>
 
                         <div class="column-title" style = "border-top: 2px solid rgba(0, 0, 0, 0.2);border-bottom: 2px solid rgba(0, 0, 0, 0.2);"> 
                                 <p>
@@ -111,20 +119,15 @@
                                     <input type="submit" value="submit" style="margin-left: 1.2em;margin-top: 0.5em; border-radius: 12px;margin-bottom: 0.5em;">
                                 </form>   
                         </div> 
-                        
+                        <!-- <div class="bgimg w3-display-container w3-text-white">
+                                    <div class="w3-display-topright w3-container w3-xlarge"> -->
+                                        
                     </div> 
                                 
                     <div id="column2"> 
                         <div class="column-title"> 
                         </div> 
 
-                        <!-- <div class="bgimg w3-display-container w3-text-white">
-                                <div class="w3-display-topright w3-container w3-xlarge">
-                                    <p><form action="/"> <input type="submit" value="Back Home" class="w3-button w3-black" style="border-radius: 12px;"/> </form></p>
-                                </div>
-                            </div> -->
-                            
-                            
                             <div class="container" style="width: 200%;margin-left: 2.5em;margin-top: 2.5em;">
                                 <canvas id="myChart" style="width:10;height: 5;"></canvas>
                             </div>
