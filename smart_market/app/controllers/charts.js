@@ -179,80 +179,71 @@ exports.makeQuotes = (req, res) => {
     const product = req.body.ccexpm
 
     var getPricesInDates = mongoHandler.getPricesBetweenDates(from_date, to_date ,product, function(networkName, price, dates){
-
-            const dataView = {
-                label: '', // supermarket name
-                backgroundColor: 'rgb(169,226,138)',
-                borderColor: 'rgb(169,226,138)',
-                data: price // number of reciepts  
-            }
-            console.log(dates)
-            var back = []
-            // random colors for chart
-            for(var i = 0; i < price.length; i++){
-                var backbackgd = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )'
-                back.push(backbackgd)
-            }
-
-            dataView.backgroundColor = back
-            dataView.borderColor = back
-            dataView.label = product
-
-            // for each data set we have: 
-            //     data: [86,114,106,106,107,111,133,221,783,2478],
-            //     label: "Africa",
+            var headline = product + "   from: " + from_date + "     to: " + to_date;
+            
             var name = networkName[0]
             var countDataset = 1
             var dataset = []
-
             var startSet = 0
-            var endSet = 1
+            var endSet = 0
             
-            
-            
-            for(var i = 1;  i < networkName.length; i++){
-                console.log(startSet)
-                console.log(endSet)
+            for(var i = 0;  i < networkName.length; i++){
+                console.log(startSet, endSet, i)
 
                 if(networkName[i] !== name){
                     var dataForset = []
-                    for(var j = startSet; j < endSet; j++){
-                        dataForset.push(price[j])
-                    }
 
+                    for(var j = 0; j < dates.length; j++){
+                        dataForset.push(0)
+                    }
+                    for(var j = startSet; j < endSet; j++){
+                        dataForset[j] = price[j]
+                    }
+                    var color = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )';
                     dataset.push(
                         { 
                             data: dataForset,
                             label: name,
-                            borderColor: 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )',
+                            backgroundColor: color,
+                            borderColor: color,
                             fill: false
                           }
                     );
-
-
                     startSet = i
-                    
                     countDataset++
                     name = networkName[i]
                 }
                 endSet++
                 
-                console.log(startSet)
-                console.log(endSet)
+                if(endSet == networkName.length && countDataset != dataset.length){
+                    if(networkName[i] == name){
+                        var dataForset = []
+                        for(var j = 0; j < dates.length; j++){
+                            dataForset.push(0)
+                        }
+                        for(var j = startSet; j < endSet; j++){
+                            dataForset[j] = price[j]
+                        }
+                        var color = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )';
+                        dataset.push(
+                            { 
+                                data: dataForset,
+                                label: name,
+                                backgroundColor: color,
+                                borderColor: color,
+                                fill: false
+                              }
+                        );
+
+                    }
+                }
+
             }
 
-
-            console.log(countDataset)
-            console.log(dataset)
-
             redisHandler.getGroceries(function(gros){
-                res.render('graph2.ejs', {collInfos: dataset, labels: dates, gros : gros, prices : price, dates : dates})
+                res.render('graph2.ejs', {collInfos: dataset, labels: dates, gros : gros, prices : price, dates : dates, headline : headline})
             })
-
-            // redisHandler.getGroceries(function(gros){
-            //   res.render('graph.ejs', {collInfos: view, labels: result, gros : gros})
-            // })
-        
-
     })
   }
+
+
