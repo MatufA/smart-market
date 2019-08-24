@@ -26,7 +26,7 @@ exports.makeChart = (req, res) => {
     })
   }
   
-exports.makeQuotes = (req, res) => {
+exports.makeGraphOfPricesInNetworks = (req, res) => {
     var r1 = [
         {
             "id": 49661700,
@@ -179,7 +179,7 @@ exports.makeQuotes = (req, res) => {
     const product = req.body.ccexpm
 
     var getPricesInDates = mongoHandler.getPricesBetweenDates(from_date, to_date ,product, function(networkName, price, dates){
-            var headline = product + "   from: " + from_date + "     to: " + to_date;
+            var headline = product + "   from: " + from_date + "   to: " + to_date;
             
             var name = networkName[0]
             var countDataset = 1

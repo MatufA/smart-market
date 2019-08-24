@@ -27,5 +27,5 @@ module.exports = function (app, passport) {
     
     //app.post('/quotes', home.loggedIn, charts.makeQuotes);
 
-    app.post('/graph2', home.loggedIn, charts.makeQuotes);
+    app.post('/graph2', home.loggedIn, charts.makeGraphOfPricesInNetworks);
 }
