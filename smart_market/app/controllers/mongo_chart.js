@@ -224,10 +224,3 @@ app.get('/', (req, res) => {
         })
     })
 })
-
-
-app.post('/graph2', (req, res) => {
-    
-    charts.makeQuotes()
- 
-})

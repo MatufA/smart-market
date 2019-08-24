@@ -192,10 +192,9 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
 
                 if(networkName[i] !== name){
                     var dataForset = []
-
-                    for(var j = 0; j < dates.length; j++){
-                        dataForset.push(0)
-                    }
+                    // for(var j = 0; j < dates.length; j++){
+                    //     dataForset.push(0)
+                    // }
                     for(var j = startSet; j < endSet; j++){
                         dataForset[j] = price[j]
                     }
@@ -218,9 +217,6 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
                 if(endSet == networkName.length && countDataset != dataset.length){
                     if(networkName[i] == name){
                         var dataForset = []
-                        for(var j = 0; j < dates.length; j++){
-                            dataForset.push(0)
-                        }
                         for(var j = startSet; j < endSet; j++){
                             dataForset[j] = price[j]
                         }

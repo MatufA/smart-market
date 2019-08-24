@@ -1,43 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=2">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <style> 
-    #section-2{ 
-        overflow: hidden; 
-        margin-top: 5em; 
-        padding-top: 1em; 
-        /* border-top: 1px solid rgba(0, 0, 0, 0.2);  */
-        text-align: center; 
-    }
-    .row #column1,  
-    .row #column2{ 
-            float: left; 
-            width: 500px; 
-            padding: 20px 40px 20px 40px; 
-    } 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="../../public/css/home.css">
+    <script type="text/javascript" src="../../public/js/upload.js"></script>
+    <style>
+        #section-2{ 
+            overflow: hidden; 
+            margin-top: 2em; 
+            padding-top: 1em; 
+            /* border-top: 1px solid rgba(0, 0, 0, 0.2);  */
+            text-align: center; 
+        }
+        .row #column1,  
+        .row #column2{ 
+                float: left; 
+                width: 500px; 
+                padding: 20px 40px 20px 40px; 
+        } 
+        #button{
+            background-color: rgb(255, 255, 255); /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .submit{
+            font-size: 14px;
+            background-color: rgb(228, 222, 222);
+            color: black; 
+            border: 0.5px solid rgb(0, 0, 0);
+            margin-left: 1.5em;
+            margin-top: 0.5em; 
+            border-radius: 12px;
+            margin-bottom: 0.5em;
+        }
+        .submit:hover{
+            background-color: #858282;
+            color: rgb(255, 255, 255);
+        }
+        .upload{
+            font-size: 20px;
+            background-color: rgb(0, 0, 0); 
+            color: rgb(255, 255, 255); 
+            border: 2px solid rgb(224, 223, 223);
+            border-radius: 10px;
+            
+        }
+        .upload:hover{
+            background-color: #d8d5d5;
+            color: rgb(0, 0, 0);
+        }
+
     </style> 
     <head>  
         <meta charset="UTF-8">  
         <title>MY APP</title>
-        <!-- import the webpage's javascript file -->
-        <!-- <script src="/server.js" defer></script> -->
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-        
     </head>
-
+    
     
     <body>
+        
         <h1 align="center" style="margin-top: 0.5em;" ><strong>Smart Market</strong></h1>
         <h3 align="center">Total reciepts</h3>
-        <section class="container" id="section-2"> 
-                <div class="row"> 
-                    <div id="column1"> 
 
-                            <div class = "bottoms">
-                                    <p><form action="/" align="left"> <input type="submit" value="Back Home" class="w3-button w3-black" style="border-radius: 12px;"/> </form>
-                                    </p>
+        <section class="container" id="section-2"> 
+                <div class="row">
+
+                    <div class = "bottoms">
+                        
+                        <p><div align="left" style="margin-left: 2em;"> 
+                            <button onclick="document.getElementById('Upload').style.display ='block'" class="button upload">Upload File</button></div>
+                        </p>
+
+                        <!-- Uploading receipts Modal -->
+                        <div id="Upload" class="w3-modal" >
+                        
+                            <div class="w3-modal-content w3-animate-zoom" >
+                            
+                                <div class="w3-container w3-black w3-display-container">
+                                    <span onclick="document.getElementById('Upload').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+                                    <h1>Uploading receipts</h1>
+                                </div>
+                            
+                                <div class="w3-container">
+                                    <div>Please select CSV, XML or JSON files only</div>
+                                    <br/>
+                                    <form action="http://localhost:5000/api/hdfs/upload"  enctype="multipart/form-data" method="POST" onsubmit="return checkFile();">
+                                    <input type="file" name="myFiles" id="myFiles" multiple accept=".csv,.json,.xml">
+                                    <input type="submit" value="submit"/>
+                                    </form>
+                                    <br/>
+                                </div>
+                            
                             </div>
+                        </div>  
+                    </div>
+                    
+
+                    <div id="column1"> 
 
                         <div class="column-title" style = "border-top: 2px solid rgba(0, 0, 0, 0.2);border-bottom: 2px solid rgba(0, 0, 0, 0.2);"> 
                                 <p>
@@ -65,8 +131,7 @@
                                                 <% }) %>
                                             </optgroup>
                                     </select>
-                                    
-                                    <input type="submit" value="submit" style="margin-left: 1.2em;margin-top: 0.5em; border-radius: 12px;margin-bottom: 0.5em;">
+                                    <button type="submit" value="submit" class="button submit">Submit</button>
                                 </form>   
                         </div> 
 
@@ -113,8 +178,7 @@
                                                 <% }) %>
                                             </optgroup>
                                     </select>
-                                    
-                                    <input type="submit" value="submit" style="margin-left: 1.2em;margin-top: 0.5em; border-radius: 12px;margin-bottom: 0.5em;">
+                                    <button type="submit" value="submit" class="button submit">Submit</button>
                                 </form>   
                         </div> 
                         
@@ -156,7 +220,8 @@
                             </script>
                     
 
-                    </div>  
+                    </div>
+
                 </div> 
 
 

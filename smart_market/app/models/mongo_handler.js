@@ -63,9 +63,6 @@ module.exports.getPricesBetweenDates = async function (from_date,to_date,product
     var from_date1 = from_date.split("-");
     var to_date2 = to_date.split("-");
     
-    // console.log(from_date1[0]) // year
-    // console.log(from_date1[1]) // month
-    // console.log(from_date1[2]) // day
     let collNames = await this.getLabels(this.db)
     collNames = collNames.filter( s => s != "ex_users");
    
@@ -102,8 +99,6 @@ module.exports.getPricesBetweenDates = async function (from_date,to_date,product
             }
         })
     })
-    console.log(lable_view)
-    console.log("================================================")
-    console.log(data_view)
+
     callback(lable_view, data_view,dates_view)
 }
