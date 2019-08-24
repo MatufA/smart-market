@@ -69,9 +69,9 @@ module.exports.getPricesBetweenDates = async function (from_date,to_date,product
     let collNames = await this.getLabels(this.db)
     collNames = collNames.filter( s => s != "ex_users");
    
-    
     var lable_view = []
     var data_view = []
+    var dates_view = []
 
     const promises = collNames.map(async coll => {
         let collection = await getCollection(coll)
@@ -83,16 +83,18 @@ module.exports.getPricesBetweenDates = async function (from_date,to_date,product
     if (!Array.isArray(collections) || !collections.length)
         return reject(new Error('Empty list'))
 
+    var from = new Date((from_date1[0]), (from_date1[1])-1, (from_date1[2]));  // -1 because months are from 0 to 11
+    var to   = new Date((to_date2[0]), (to_date2[1])-1, (to_date2[2]));
+    
     collections.forEach(elements =>{
         elements.forEach(element => {
-            let date_in_reciepts = element.date.split("/"); //dateInReciepts[0] - day, dateInReciepts[1] - month, dateInReciepts[2] - year
-            if( (Number(date_in_reciepts[1]) >= Number(from_date1[1])) 
-                && (Number(date_in_reciepts[1]) <= Number(to_date2[1])) 
-                && (Number(date_in_reciepts[0]) >= Number(from_date1[2])) 
-                && (Number(date_in_reciepts[0]) >= Number(to_date2[2])) ){
-                    
+            let date_in_reciepts = element.date.split("/"); 
+            var check = new Date((date_in_reciepts[2]), (date_in_reciepts[1])-1, (date_in_reciepts[0]));
+            
+            if( (check >= from && check <= to) ){
                 element.gros.forEach(prod => {
                     if(prod.product_name === product){
+                        dates_view.push(element.date)
                         lable_view.push(element.name)
                         data_view.push(prod.price)     
                     }
@@ -100,6 +102,8 @@ module.exports.getPricesBetweenDates = async function (from_date,to_date,product
             }
         })
     })
-
-    callback(lable_view, data_view)
+    console.log(lable_view)
+    console.log("================================================")
+    console.log(data_view)
+    callback(lable_view, data_view,dates_view)
 }

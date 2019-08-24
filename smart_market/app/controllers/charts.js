@@ -178,15 +178,15 @@ exports.makeQuotes = (req, res) => {
     const to_date = req.body.to
     const product = req.body.ccexpm
 
-    var getPricesInDates = mongoHandler.getPricesBetweenDates(from_date, to_date ,product, function(grocs, price){
+    var getPricesInDates = mongoHandler.getPricesBetweenDates(from_date, to_date ,product, function(networkName, price, dates){
 
             const dataView = {
                 label: '', // supermarket name
                 backgroundColor: 'rgb(169,226,138)',
                 borderColor: 'rgb(169,226,138)',
-                data: grocs // number of reciepts  
+                data: price // number of reciepts  
             }
-
+            console.log(dates)
             var back = []
             // random colors for chart
             for(var i = 0; i < price.length; i++){
@@ -198,15 +198,61 @@ exports.makeQuotes = (req, res) => {
             dataView.borderColor = back
             dataView.label = product
 
+            // for each data set we have: 
+            //     data: [86,114,106,106,107,111,133,221,783,2478],
+            //     label: "Africa",
+            var name = networkName[0]
+            var countDataset = 1
+            var dataset = []
+
+            var startSet = 0
+            var endSet = 1
+            
+            
+            
+            for(var i = 1;  i < networkName.length; i++){
+                console.log(startSet)
+                console.log(endSet)
+
+                if(networkName[i] !== name){
+                    var dataForset = []
+                    for(var j = startSet; j < endSet; j++){
+                        dataForset.push(price[j])
+                    }
+
+                    dataset.push(
+                        { 
+                            data: dataForset,
+                            label: name,
+                            borderColor: 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )',
+                            fill: false
+                          }
+                    );
+
+
+                    startSet = i
+                    
+                    countDataset++
+                    name = networkName[i]
+                }
+                endSet++
+                
+                console.log(startSet)
+                console.log(endSet)
+            }
+
+
+            console.log(countDataset)
+            console.log(dataset)
+
             redisHandler.getGroceries(function(gros){
-                res.render('graph2.ejs', {collInfos: dataView, labels: grocs, gros : gros, prices : price})
+                res.render('graph2.ejs', {collInfos: dataset, labels: dates, gros : gros, prices : price, dates : dates})
             })
 
             // redisHandler.getGroceries(function(gros){
             //   res.render('graph.ejs', {collInfos: view, labels: result, gros : gros})
             // })
         
-        console.log(grocs)
-        console.log(price)
+
     })
   }
