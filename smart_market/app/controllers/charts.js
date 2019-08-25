@@ -16,7 +16,7 @@ exports.makeChart = (req, res) => {
             }
             view.backgroundColor = back
             view.borderColor = back
-            view.label = '# of reciepts'
+            view.label = '# of receipts'
   
             redisHandler.getGroceries(function(gros){
               res.render('graph.ejs', {collInfos: view, labels: result, gros : gros})
