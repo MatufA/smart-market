@@ -70,9 +70,6 @@ let isBetweenDate = function(from_date, to_date, reciept_date){
 }
 
 module.exports.getPricesBetweenDates = async function (from_date, to_date, product, callback){
-    // var from_date1 = from_date.split("-");
-    // var to_date2 = to_date.split("-");
-    
     let collNames = await this.getLabels(this.db)
    
     var lable_view = []
@@ -88,9 +85,6 @@ module.exports.getPricesBetweenDates = async function (from_date, to_date, produ
 
     if (!Array.isArray(collections) || !collections.length)
         throw new Error('Empty list')
-
-    // var from = new Date((from_date1[0]), (from_date1[1])-1, (from_date1[2]));  // -1 because months are from 0 to 11
-    // var to   = new Date((to_date2[0]), (to_date2[1])-1, (to_date2[2]));
     
     collections.forEach(elements =>{
         elements.forEach(element => {

@@ -2,7 +2,7 @@
         {
             "id": 442221667,
             "name": "Osher Ad",
-            "date": "16/6/19",
+            "date": "16/6/2019",
             "gros":[      
                 { "product_name": "Turkish Coffee - 100gr", "price":8.99},
                 { "product_name": "Shnitzel - 1KG", "price":37.99},
@@ -24,7 +24,7 @@
         {
             "id": 46822571,
             "name": "Osher Ad",
-            "date": "19/6/19",
+            "date": "19/6/2019",
             "gros":[      
                 { "product_name": "Butter - 200gr", "price":5.25},
                 { "product_name": "Turkish Coffee - 100gr", "price":8.99},
@@ -53,7 +53,7 @@
         {
             "id": 99964815,
             "name": "Osher Ad",
-            "date": "24/6/19",
+            "date": "24/6/2019",
             "gros":[      
                 { "product_name": "Turkish Coffee - 100gr", "price":6.99},
                 { "product_name": "Para Chooclate", "price":6.29},
@@ -74,7 +74,7 @@
         {
             "id": 77554444,
             "name": "Osher Ad",
-            "date": "1/7/19",
+            "date": "1/7/2019",
             "gros":[      
                 { "product_name": "Ski 5%", "price":4.75},
                 { "product_name": "Milk 3%", "price":5.94},
@@ -100,7 +100,7 @@
         {
             "id": 14228796,
             "name": "Osher Ad",
-            "date": "12/7/19",
+            "date": "12/7/2019",
             "gros":[      
                 { "product_name": "Milk 3%", "price":5.94},
                 { "product_name": "Parmezanh Cheese - 200gr", "price":21.9},
@@ -123,7 +123,7 @@
         {
             "id": 79661511,
             "name": "Osher Ad",
-            "date": "18/7/19",
+            "date": "18/7/2019",
             "gros":[      
                 { "product_name": "Minced Meat - 1KG", "price":59.99},
                 { "product_name": "Shnitzel - 1KG", "price":39.99},
@@ -154,7 +154,7 @@
         {
             "id": 75161960,
             "name": "Osher Ad",
-            "date": "26/7/19",
+            "date": "26/7/2019",
             "gros":[      
                 { "product_name": "Pargit - 1KG", "price":54.9},
                 { "product_name": "Ski 5%", "price":4.75},
@@ -181,7 +181,7 @@
         {
             "id": 84265791,
             "name": "Osher Ad",
-            "date": "2/8/19",
+            "date": "2/8/2019",
             "gros":[      
                 { "product_name": "Ski 5%", "price":4.75},
                 { "product_name": "Milk 3%", "price":5.94},
@@ -209,7 +209,7 @@
         {
             "id": 43162889,
             "name": "Osher Ad",
-            "date": "8/8/19",
+            "date": "8/8/2019",
             "gros":[      
                 { "product_name": "Ski 5%", "price":4.75},
                 { "product_name": "Milk 3%", "price":5.94},

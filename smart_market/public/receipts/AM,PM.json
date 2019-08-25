@@ -124,7 +124,7 @@
     {
         "id": 91474123,
         "name": "AM:PM",
-        "date": "19/7/19",
+        "date": "19/7/2019",
         "gros":[      
             { "product_name": "Turkish Coffee - 100gr", "price":6.99},
             { "product_name": "Para Chooclate", "price":6.29},
@@ -148,7 +148,7 @@
     {
         "id": 94256618,
         "name": "AM:PM",
-        "date": "25/7/19",
+        "date": "25/7/2019",
         "gros":[      
             { "product_name": "Ski 5%", "price":4.75},
             { "product_name": "Milk 3%", "price":5.94},
@@ -174,7 +174,7 @@
     {
         "id": 84221753,
         "name": "AM:PM",
-        "date": "1/8/19",
+        "date": "1/8/2019",
         "gros":[      
             { "product_name": "Turkish Coffee - 100gr", "price":6.99},
             { "product_name": "Milk 3%", "price":5.94},
@@ -195,7 +195,7 @@
     {
         "id": 14211576,
         "name": "AM:PM",
-        "date": "9/8/19",
+        "date": "9/8/2019",
         "gros":[      
             { "product_name": "Minced Meat - 1KG", "price":59.99},
             { "product_name": "Shnitzel - 1KG", "price":38.99},
@@ -227,7 +227,7 @@
     {
         "id": 34618955,
         "name": "AM:PM",
-        "date": "12/8/19",
+        "date": "12/8/2019",
         "gros":[      
             { "product_name": "Pargit - 1KG", "price":54.9},
             { "product_name": "Ski 5%", "price":4.75},
@@ -245,7 +245,7 @@
     {
         "id": 46255978,
         "name": "AM:PM",
-        "date": "17/8/19",
+        "date": "17/8/2019",
         "gros":[      
             { "product_name": "Ski 5%", "price":4.75},
             { "product_name": "Milk 3%", "price":5.94},
