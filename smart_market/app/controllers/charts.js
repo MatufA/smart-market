@@ -19,7 +19,7 @@ exports.makeChart = (req, res) => {
             view.label = '# of receipts'
   
             redisHandler.getGroceries(function(gros){
-              res.render('graph.ejs', {collInfos: view, labels: result, gros : gros})
+              res.render('graph', {collInfos: view, labels: result, gros : gros})
             })
             
         })
@@ -241,5 +241,4 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
             })
     })
   }
-
 
