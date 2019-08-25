@@ -60,6 +60,8 @@ const getCollection = async function(collectionName) {
 }
 
 module.exports.getPricesBetweenDates = async function (from_date,to_date,product, callback){
+    console.log(from_date)
+    console.log(to_date)
     var from_date1 = from_date.split("-");
     var to_date2 = to_date.split("-");
     
