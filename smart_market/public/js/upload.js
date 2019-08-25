@@ -1,4 +1,4 @@
-module.exports = function checkFile() {
+exports.checkFile = function () {
     var fileElement = document.getElementById("myFiles");
     var fileExtension = "";
     if (fileElement.value.lastIndexOf(".") > 0) {

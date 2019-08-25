@@ -31,7 +31,7 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
         {
             "id": 49661700,
             "name": "Osher Ad",
-            "date": "5/6/19",
+            "date": "5/6/2019",
             "gros":[      
                 { "product_name": "Ski 5%", "price":4.75},
                 { "product_name": "Milk 3%", "price":5.94},
@@ -57,7 +57,7 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
         {
             "id": 442221667,
             "name": "Osher Ad",
-            "date": "16/6/19",
+            "date": "16/6/2019",
             "gros":[      
                 { "product_name": "Turkish Coffee - 100gr", "price":8.99},
                 { "product_name": "Para Chooclate", "price":6.29},
@@ -78,7 +78,7 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
         {
             "id": 46822571,
             "name": "Osher Ad",
-            "date": "19/6/19",
+            "date": "19/6/2019",
             "gros":[      
                 { "product_name": "Butter - 200gr", "price":5.25},
                 { "product_name": "Turkish Coffee - 100gr", "price":8.99},
@@ -106,7 +106,7 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
         {
             "id": 99964815,
             "name": "Osher Ad",
-            "date": "24/6/19",
+            "date": "24/6/2019",
             "gros":[      
                 { "product_name": "Turkish Coffee - 100gr", "price":6.99},
                 { "product_name": "Para Chooclate", "price":6.29},
@@ -127,7 +127,7 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
         {
             "id": 77554444,
             "name": "Osher Ad",
-            "date": "1/7/19",
+            "date": "1/7/2019",
             "gros":[      
                 { "product_name": "Ski 5%", "price":4.75},
                 { "product_name": "Milk 3%", "price":5.94},
@@ -150,7 +150,7 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
         {
             "id": 14228796,
             "name": "Osher Ad",
-            "date": "12/7/19",
+            "date": "12/7/2019",
             "gros":[      
                 { "product_name": "Turkish Coffee - 100gr", "price":6.99},
                 { "product_name": "Milk 3%", "price":5.94},
@@ -171,30 +171,46 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
                 { "product_name": "Butter - 200gr", "price":5.25}
             ]
         }
-    
     ]
     
     const from_date = req.body.from
     const to_date = req.body.to
     const product = req.body.ccexpm
 
-    var getPricesInDates = mongoHandler.getPricesBetweenDates(from_date, to_date ,product, function(networkName, price, dates){
-            var headline = product + "   from: " + from_date + "   to: " + to_date;
+    mongoHandler.getPricesBetweenDates(from_date, to_date ,product, function(networkName, price, dates){
+        var headline = product + "   from: " + from_date + "   to: " + to_date;
+        
+        var name = networkName[0]
+        var countDataset = 1
+        var dataset = []
+        var startSet = 0
+        var endSet = 0
+        
+        for(var i = 0;  i < networkName.length; i++){
+            if(networkName[i] !== name){
+                var dataForset = []
+                for(var j = startSet; j < endSet; j++){
+                    dataForset[j] = price[j]
+                }
+                var color = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )';
+                dataset.push(
+                    { 
+                        data: dataForset,
+                        label: name,
+                        backgroundColor: color,
+                        borderColor: color,
+                        fill: false
+                        }
+                );
+                startSet = i
+                countDataset++
+                name = networkName[i]
+            }
+            endSet++
             
-            var name = networkName[0]
-            var countDataset = 1
-            var dataset = []
-            var startSet = 0
-            var endSet = 0
-            
-            for(var i = 0;  i < networkName.length; i++){
-                console.log(startSet, endSet, i)
-
-                if(networkName[i] !== name){
+            if(endSet == networkName.length && countDataset != dataset.length){
+                if(networkName[i] == name){
                     var dataForset = []
-                    // for(var j = 0; j < dates.length; j++){
-                    //     dataForset.push(0)
-                    // }
                     for(var j = startSet; j < endSet; j++){
                         dataForset[j] = price[j]
                     }
@@ -206,39 +222,32 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
                             backgroundColor: color,
                             borderColor: color,
                             fill: false
-                          }
+                            }
                     );
-                    startSet = i
-                    countDataset++
-                    name = networkName[i]
                 }
-                endSet++
-                
-                if(endSet == networkName.length && countDataset != dataset.length){
-                    if(networkName[i] == name){
-                        var dataForset = []
-                        for(var j = startSet; j < endSet; j++){
-                            dataForset[j] = price[j]
-                        }
-                        var color = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )';
-                        dataset.push(
-                            { 
-                                data: dataForset,
-                                label: name,
-                                backgroundColor: color,
-                                borderColor: color,
-                                fill: false
-                              }
-                        );
-
-                    }
-                }
-
             }
+        }
 
-            redisHandler.getGroceries(function(gros){
-                res.render('graph2.ejs', {collInfos: dataset, labels: dates, gros : gros, prices : price, dates : dates, headline : headline})
-            })
+        redisHandler.getGroceries(function(gros){
+            res.render('graph2.ejs', {collInfos: dataset, labels: dates, gros : gros, prices : price, dates : dates, headline : headline})
+        })
     })
   }
 
+exports.makeGraphOfPurchaseVolume = (req, res) =>{
+    let first_from_date = req.body.from[0],
+        first_to_date = req.body.to[0],
+        second_from_date = req.body.from[1],
+        second_to_date = req.body.to[1],          
+        product = req.body.ccexpm
+
+    mongoHandler.getProductCountBetweenDates(first_from_date, first_to_date, second_from_date, second_to_date, product, function(data){
+        let headline = product
+        console.log(data)
+
+        redisHandler.getGroceries(function(gros){
+            res.render('graph2.ejs')
+            // res.render('graph2.ejs', {collInfos: dataset, labels: dates, gros : gros, prices : price, dates : dates, headline : headline})
+        })
+    })
+}
