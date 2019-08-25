@@ -11,15 +11,19 @@
     <link rel="stylesheet" href="../../public/css/home.css">
   </head>
   <body>
+
+
     <div class="bgimg w3-display-container w3-text-white">
         <div class="w3-display-middle w3-jumbo">
           <!-- <p>Hello <%= username %></p> -->
           <p><%= title %></p>
         </div>
+
         <div class="w3-display-topleft w3-container w3-xlarge">
           <p><button onclick="document.getElementById('Upload').style.display ='block'" class="w3-button w3-black">Upload File</button></p>
           <p><form action="/graph"> <input type="submit" value="Graphs" class="w3-button w3-black"/> </form></p>
         </div>
+
       </div>
       
       <!-- Uploading receipts Modal -->
@@ -48,5 +52,7 @@
 
       <!-- Javascript -->
       <script type="text/javascript" src="../../public/js/upload.js"></script>
+
+      
   </body>
 </html>
