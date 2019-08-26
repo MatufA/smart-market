@@ -146,5 +146,5 @@ module.exports.getProductCountBetweenDates = async function (from_date_first, to
             }
         })
     })
-    callback(data_view)
+    callback(data_view, lables)
 }

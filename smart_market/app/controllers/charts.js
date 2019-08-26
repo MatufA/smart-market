@@ -241,9 +241,16 @@ exports.makeGraphOfPurchaseVolume = (req, res) =>{
         second_to_date = req.body.to[1],          
         product = req.body.ccexpm
 
-    mongoHandler.getProductCountBetweenDates(first_from_date, first_to_date, second_from_date, second_to_date, product, function(data){
+    mongoHandler.getProductCountBetweenDates(first_from_date, first_to_date, second_from_date, second_to_date, product, function(data, labels){
         let headline = product
+        let first_period_count = []
+        let second_period_count = []
         console.log(data)
+
+        labels.array.forEach(element => {
+            first_period_count.push(data.first[element])
+            second_period_count.push(data.second[element])
+        })
 
         redisHandler.getGroceries(function(gros){
             res.render('graph2.ejs')
