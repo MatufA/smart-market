@@ -245,16 +245,32 @@ exports.makeGraphOfPurchaseVolume = (req, res) =>{
         let headline = product
         let first_period_count = []
         let second_period_count = []
+        var dataset_first = []
+        
         console.log(data)
-
-        labels.array.forEach(element => {
+        var x = ["Period 1", "Period 2" ]
+        
+        labels.forEach(element => {
             first_period_count.push(data.first[element])
             second_period_count.push(data.second[element])
+            
+            var dataForset_first = []
+            dataForset_first.push(data.first[element])
+            dataForset_first.push(data.second[element])
+            var color = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )';
+            dataset_first.push(
+                { 
+                    label: element,
+                    backgroundColor: color,
+                    borderColor: color,
+                    data: dataForset_first
+                    }
+            );
         })
+        console.log(dataset_first)
 
         redisHandler.getGroceries(function(gros){
-            res.render('graph2.ejs')
-            // res.render('graph2.ejs', {collInfos: dataset, labels: dates, gros : gros, prices : price, dates : dates, headline : headline})
+            res.render('graph3.ejs', { collInfos: dataset_first, gros : gros, headline : headline, labels: x})
         })
     })
 }

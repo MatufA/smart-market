@@ -7,7 +7,7 @@
     <script type="text/javascript" src="../../public/js/upload.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-    <style>
+    <style> 
         #section-2{ 
             overflow: hidden; 
             margin-top: 2em; 
@@ -20,7 +20,7 @@
                 float: left; 
                 width: 500px; 
                 padding: 20px 40px 20px 40px; 
-        } 
+        }
         #button{
             background-color: rgb(255, 255, 255); /* Green */
             border: none;
@@ -28,6 +28,18 @@
             padding: 15px 32px;
             text-align: center;
             text-decoration: none;
+        }
+        .home{
+            font-size: 20px;
+            background-color: white; 
+            color: black; 
+            border: 2px solid rgb(92, 92, 92);
+            border-radius: 14px;
+            margin-left: 0.3em;
+        }
+        .home:hover{
+            background-color: #2b2a2a;
+            color: rgb(255, 255, 255);
         }
         .submit{
             font-size: 14px;
@@ -74,48 +86,56 @@
     <head>  
         <meta charset="UTF-8">  
         <title>MY APP</title>
+        <!-- import the webpage's javascript file -->
+        <!-- <script src="/server.js" defer></script> -->
+        
+        <div class = "bottoms">
+                <p><form action="/graph" align="left" style="margin-left: 2em;"> 
+                    <button type="submit" class="button home">Home</button></form>
+                </p>
+        </div>
     </head>
+
     
     <body>
-        
-        <h1 align="center" style="margin-top: 1.9em;" ><strong>Smart Market</strong></h1>
-        <h3 align="center">Adiel Matuf & Yehuda Neumann</h3>
-
+        <h1 align="center" style="margin-top: 0.5em;" ><strong>Smart Market</strong></h1>
+        <h3 align="center">Filtering data</h3>
         <section class="container" id="section-2"> 
-                <div class="row">
 
-                    <div class = "buttoms">
-                        
-                        <p><div align="left" style="margin-left: 2em;"> 
-                            <button onclick="document.getElementById('Upload').style.display ='block'" class="button upload">Upload File</button></div>
-                        </p>
+                <div class="row"> 
 
-                        <!-- Uploading receipts Modal -->
-                        <div id="Upload" class="w3-modal" >
+                        <div class = "buttoms">
                         
-                            <div class="w3-modal-content w3-animate-zoom" >
+                            <p><div align="left" style="margin-left: 2em;"> 
+                                <button onclick="document.getElementById('Upload').style.display ='block'" class="button upload">Upload File</button></div>
+                            </p>
+    
+                            <!-- Uploading receipts Modal -->
+                            <div id="Upload" class="w3-modal" >
                             
-                                <div class="w3-container w3-black w3-display-container">
-                                    <span onclick="document.getElementById('Upload').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
-                                    <h1>Uploading receipts</h1>
+                                <div class="w3-modal-content w3-animate-zoom" >
+                                
+                                    <div class="w3-container w3-black w3-display-container">
+                                        <span onclick="document.getElementById('Upload').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+                                        <h1>Uploading receipts</h1>
+                                    </div>
+                                
+                                    <div class="w3-container">
+                                        <br/>
+                                        <div>Please select CSV, XML or JSON files only</div>
+                                        <br/>
+                                        <form action="http://localhost:5000/api/hdfs/upload"  enctype="multipart/form-data" method="POST" onsubmit="return checkFile();">
+                                        <input type="file" name="myFiles" id="myFiles" multiple accept=".csv,.json,.xml">
+                                        <input type="submit" value="submit"/>
+                                        </form>
+                                        <br/>
+                                    </div>
+                                
                                 </div>
-                            
-                                <div class="w3-container">
-                                    <br/>
-                                    <div>Please select CSV, XML or JSON files only</div>
-                                    <br/>
-                                    <form action="http://localhost:5000/api/hdfs/upload"  enctype="multipart/form-data" method="POST" onsubmit="return checkFile();">
-                                    <input type="file" name="myFiles" id="myFiles" multiple accept=".csv,.json,.xml">
-                                    <input type="submit" value="submit"/>
-                                    </form>
-                                    <br/>
-                                </div>
-                            
-                            </div>
-                        </div>  
-                    </div>
-                    
-                    <div id="column1"> 
+                            </div>  
+                        </div>
+
+                    <div id="column1">
 
                         <div class="column-title" style = "border-top: 2px solid rgba(0, 0, 0, 0.2);border-bottom: 2px solid rgba(0, 0, 0, 0.2);"> 
                                 <p>
@@ -134,7 +154,6 @@
                                     
                                     <br>
                                     <label for="ccexpm">Product:</label>
-
                                     <select id = "ccexpm" name = "ccexpm" class="button product">
                                         <optgroup label="Select Table">
                                                 <option value=""  >Select Grocery</option>
@@ -143,6 +162,7 @@
                                                 <% }) %>
                                             </optgroup>
                                     </select>
+                                    
                                     <button type="submit" value="submit" class="button submit">Submit</button>
                                     <p/>
                                 </form>   
@@ -154,18 +174,18 @@
                                 Volume of products in supermarkets:
                                 </p>
                                                                 
-                                <form action="/quotes" method="POST" style="margin-left: 4.5em ;margin-top: 0.5em;" align="left"> 
+                                <form action="/graph3" method="POST" style="margin-left: 4.5em ;margin-top: 0.5em;" align="left"> 
                                     <p align="left">
                                             <strong>First date:</strong>
                                     </p>
 
                                     <label for="bday" >From:</label>
-                                    <input type="date" id="from" name="from" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="button date-from">
+                                    <input type="date" id="from" name="first_from" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="button date-from">
                                     <span class="validity"></span>
 
                                     <br>
                                     <label for="bday">To:</label>
-                                    <input type="date" id="to" name="to" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value="from date" class="button date-to">
+                                    <input type="date" id="to" name="first_to" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value="from date" class="button date-to">
                                     <span class="validity"></span>
                                     
                                     <br>
@@ -173,12 +193,12 @@
                                             <strong>Second date:</strong>
                                     </p>
                                     <label for="bday" >From:</label>
-                                    <input type="date" id="from" name="from" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="button date-from">
+                                    <input type="date" id="from" name="second_from" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="button date-from">
                                     <span class="validity"></span>
 
                                     <br>
                                     <label for="bday">To:</label>
-                                    <input type="date" id="to" name="to" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value="from date" class="button date-to">
+                                    <input type="date" id="to" name="second_to" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value="from date" class="button date-to">
                                     <span class="validity"></span>
                                     
                                     <br>
@@ -191,34 +211,42 @@
                                                 <% }) %>
                                             </optgroup>
                                     </select>
+                                    
                                     <button type="submit" value="submit" class="button submit">Submit</button>
                                     <p/>
                                 </form>   
                         </div> 
-                        
+                        <!-- <div class="bgimg w3-display-container w3-text-white">
+                                    <div class="w3-display-topright w3-container w3-xlarge"> -->
+                                        
                     </div> 
                                 
                     <div id="column2"> 
                         <div class="column-title"> 
                         </div> 
-                            
+
                             <div class="container" style="width: 200%;margin-left: 2.5em;margin-top: 2.5em;">
                                 <canvas id="myChart" style="width:10;height: 5;"></canvas>
                             </div>
-                    
                             <script>
                                 var dataView = <%-JSON.stringify(collInfos)%>;
                                 var dataLabels = <%-JSON.stringify(labels)%>;
                                 var groceries = <%-JSON.stringify(gros)%>;
+                                var headline = <%-JSON.stringify(headline)%>;
                                 
+                                console.log(dataView)
                                 var ctx = document.getElementById('myChart').getContext('2d');
                                 var myChart = new Chart(ctx, {
                                     type: 'bar',
                                     data: {
                                         labels: dataLabels,
-                                        datasets: [dataView]
+                                        datasets: dataView
                                     },
                                     options: {
+                                        title: {
+                                            display: true,
+                                            text: headline
+                                        },
                                         scales: {
                                             yAxes: [{
                                                 ticks: {
@@ -230,9 +258,10 @@
                                 });
                             </script>
 
-                    </div>
-
+                    </div>  
                 </div> 
 
+
+        
     </body>
 </html>
