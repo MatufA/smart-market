@@ -1,0 +1,30 @@
+{
+    "id":142248645,
+    "name":"Shufersal",
+    "date":"28/6/2019",
+    "address":"Yigal Alon 76 Tel-Aviv",
+    "phone":"03-5628471",
+    "number_of_items": 17,
+    "pos_number": "004",
+    "cashier_name": "Sofia",
+    "gros":[
+        { "product_name":"Butter - 200gr", "price": 5.25},
+        { "product_name":"Turkish Coffee - 100gr", "price": 8.79},
+        { "product_name":"Para Chooclate", "price": 5.7},
+        { "product_name":"Red Onion - 1KG", "price": 4.75},
+        { "product_name":"Pargit - 1KG", "price":52.9},
+        { "product_name":"Eggplant - 1KG", "price": 9.9},
+        { "product_name":"Eggs M - 12 Units", "price":10.4},
+        { "product_name":"Ricotta Cheese - 200gr", "price": 11.8},
+        { "product_name":"Tommatos - 1KG", "price": 4.5},
+        { "product_name":"Cucumber - 1KG", "price": 3.2},
+        { "product_name":"Pita Bread - 13 Units" , "price":9.9},
+        { "product_name":"Tuna Starkist - 4 Units", "price": 24.9},
+        { "product_name":"Milk 3%", "price": 5.94},
+        { "product_name":"Cotton Sticks Ear Cleaning - 100 Units", "price": 3.49},
+        { "product_name":"Shoghi Cornflakes - 500gr", "price": 21.9},
+        { "product_name":"Para Chooclate", "price": 5.7},
+        { "product_name":"Canola Oil - 750gr", "price": 12.9},
+        { "product_name":"Nutella - 750gr", "price": 24.9}
+    ]
+}

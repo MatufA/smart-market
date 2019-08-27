@@ -1,0 +1,33 @@
+{
+    "id": 84265791,
+    "name": "Osher Ad",
+    "date": "2/8/2019",
+    "address":"Walter Moses 6 Tel-Aviv",
+    "phone":"076-8899905",
+    "number_of_items": 20,
+    "pos_number": "008",
+    "cashier_name": "Yochi",
+    "gros":[      
+        { "product_name": "Ski 5%", "price":4.75},
+        { "product_name": "Milk 3%", "price":5.94},
+        { "product_name": "Shnitzel - 1KG", "price":39.99},
+        { "product_name": "Breadcrumbs - 100gr", "price":14.90},
+        { "product_name": "Sesame Rolls - 6 Pack", "price":13.49},
+        { "product_name": "Eggs L - 12 Units", "price":11.3},
+        { "product_name": "Tommatos - 1KG", "price":3.89},
+        { "product_name": "Cucumber - 1KG", "price":4.79},
+        { "product_name": "Watermelom - 1KG", "price":3.69},
+        { "product_name":"Eggplant - 1KG", "price": 9.9},
+        { "product_name": "Pita Bread - 13 Units", "price":10.99},
+        { "product_name": "Red Onion - 1KG", "price":4.89},
+        { "product_name": "Fairy Clean Liquid - 650gr", "price":9.99},
+        { "product_name": "Shampoo Neka7 - 750gr", "price":9.9},
+        { "product_name": "Turkish Coffee - 100gr", "price":6.99},
+        { "product_name": "Butter - 200gr", "price":5.25},
+        { "product_name": "Lettuce", "price":5.99},
+        { "product_name": "Para Chooclate", "price":5.79},
+        { "product_name": "Ricotta Cheese - 200gr", "price":11.99},
+        { "product_name": "Nutella - 750gr", "price":23.99},
+        { "product_name": "Carrot  - 1KG", "price":4.99}
+    ]
+}
