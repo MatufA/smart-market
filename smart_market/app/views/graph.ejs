@@ -9,17 +9,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <style>
         #section-2{ 
-            overflow: hidden; 
-            margin-top: 2em; 
-            padding-top: 1em; 
+            /* overflow: hidden;  */
+            /* margin-top: 1em;  */
+            /* padding-top: 1em;  */
             /* border-top: 1px solid rgba(0, 0, 0, 0.2);  */
             text-align: center; 
         }
         .row #column1,  
         .row #column2{ 
                 float: left; 
-                width: 500px; 
-                padding: 20px 40px 20px 40px; 
+                width: 319px; 
+                /* padding: 10px 10px 10px 10px;  */
         } 
         #button{
             background-color: rgb(255, 255, 255); /* Green */
@@ -80,8 +80,7 @@
         
         <h1 align="center" style="margin-top: 1.9em;" ><strong>Smart Market</strong></h1>
         <h3 align="center">Adiel Matuf & Yehuda Neumann</h3>
-
-        <section class="container" id="section-2"> 
+        <section class="container" id="section-2" > 
                 <div class="row">
 
                     <div class = "buttoms">
@@ -122,7 +121,7 @@
                                 Distribution of prices in supermarkets:
                                 </p>
 
-                                <form action="/graph2" method="POST" style="margin-left: 4.5em ;margin-top: 0.5em;" align="left"> 
+                                <form action="/graph2" method="POST" style="margin-left: 2em ;margin-top: 0.5em;" align="left"> 
                                     <label for="bday" >From:</label>
                                     <input type="date" id="from" name="from" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" class="button date-from">
                                     <span class="validity"></span>
@@ -154,7 +153,7 @@
                                 Volume of products in supermarkets:
                                 </p>
                                                                 
-                                <form action="/graph3" method="POST" style="margin-left: 4.5em ;margin-top: 0.5em;" align="left"> 
+                                <form action="/graph3" method="POST" style="margin-left: 2em ;margin-top: 0.5em;" align="left"> 
                                     <p align="left">
                                             <strong>First date:</strong>
                                     </p>
@@ -202,7 +201,7 @@
                         <div class="column-title"> 
                         </div> 
                             
-                            <div class="container" style="width: 200%;margin-left: 2.5em;margin-top: 2.5em;">
+                            <div class="container" style="width: 250%;margin-left: 10em">
                                 <canvas id="myChart" style="width:10;height: 5;"></canvas>
                             </div>
                     
