@@ -1,5 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>  
+        <meta charset="UTF-8">  
+        <title>MY APP</title>
+        <style>
+            #section-2{ 
+                /* overflow: hidden;  */
+                /* margin-top: 1em;  */
+                /* padding-top: 1em;  */
+                /* border-top: 1px solid rgba(0, 0, 0, 0.2);  */
+                text-align: center; 
+            }
+            .row #column1,  
+            .row #column2{ 
+                    float: left; 
+                    width: 319px; 
+                    /* padding: 10px 10px 10px 10px;  */
+            } 
+            #button{
+                background-color: rgb(255, 255, 255); /* Green */
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+            }
+            .submit{
+                font-size: 14px;
+                background-color: rgb(228, 222, 222);
+                color: black; 
+                border: 0.5px solid rgb(0, 0, 0);
+                margin-left: 1.5em;
+                margin-top: 0.5em; 
+                border-radius: 12px;
+                margin-bottom: 0.5em;
+            }
+            .submit:hover{
+                background-color: #858282;
+                color: rgb(255, 255, 255);
+            }
+            .upload{
+                font-size: 20px;
+                background-color: rgb(0, 0, 0); 
+                color: rgb(255, 255, 255); 
+                border: 2px solid rgb(224, 223, 223);
+                border-radius: 14px;
+                margin-left: 0.3em;
+            }
+            .upload:hover{
+                background-color: #d8d5d5;
+                color: rgb(0, 0, 0);
+            }
+            .date-to{
+                width: 160px;
+                border-radius: 14px;
+                margin-left: 1.4em;
+                margin-top: 0.5em;
+            }
+            .date-from{
+                width: 160px;
+                border-radius: 14px;
+            }
+            .product{
+                border-radius: 10px; 
+                width: 142px;
+            }
+        </style>
+    </head>
     <meta name="viewport" content="width=device-width, initial-scale=2">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -7,81 +74,15 @@
     <script type="text/javascript" src="../../public/js/upload.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-    <style>
-        #section-2{ 
-            /* overflow: hidden;  */
-            /* margin-top: 1em;  */
-            /* padding-top: 1em;  */
-            /* border-top: 1px solid rgba(0, 0, 0, 0.2);  */
-            text-align: center; 
-        }
-        .row #column1,  
-        .row #column2{ 
-                float: left; 
-                width: 319px; 
-                /* padding: 10px 10px 10px 10px;  */
-        } 
-        #button{
-            background-color: rgb(255, 255, 255); /* Green */
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-        }
-        .submit{
-            font-size: 14px;
-            background-color: rgb(228, 222, 222);
-            color: black; 
-            border: 0.5px solid rgb(0, 0, 0);
-            margin-left: 1.5em;
-            margin-top: 0.5em; 
-            border-radius: 12px;
-            margin-bottom: 0.5em;
-        }
-        .submit:hover{
-            background-color: #858282;
-            color: rgb(255, 255, 255);
-        }
-        .upload{
-            font-size: 20px;
-            background-color: rgb(0, 0, 0); 
-            color: rgb(255, 255, 255); 
-            border: 2px solid rgb(224, 223, 223);
-            border-radius: 14px;
-            margin-left: 0.3em;
-        }
-        .upload:hover{
-            background-color: #d8d5d5;
-            color: rgb(0, 0, 0);
-        }
-        .date-to{
-            width: 160px;
-            border-radius: 14px;
-            margin-left: 1.4em;
-            margin-top: 0.5em;
-        }
-        .date-from{
-            width: 160px;
-            border-radius: 14px;
-        }
-        .product{
-            border-radius: 10px; 
-            width: 142px;
-        }
-
-    </style> 
-    <head>  
-        <meta charset="UTF-8">  
-        <title>MY APP</title>
-    </head>
+     
+ 
     
     <body>
         
         <h1 align="center" style="margin-top: 1.9em;" ><strong>Smart Market</strong></h1>
         <h3 align="center">Adiel Matuf & Yehuda Neumann</h3>
         <section class="container" id="section-2" > 
-                <div class="row">
+                <div class="row" >
 
                     <div class = "buttoms">
                         
@@ -114,7 +115,7 @@
                         </div>  
                     </div>
                     
-                    <div id="column1"> 
+                    <div id="column1" > 
 
                         <div class="column-title" style = "border-top: 2px solid rgba(0, 0, 0, 0.2);border-bottom: 2px solid rgba(0, 0, 0, 0.2);"> 
                                 <p>
@@ -201,7 +202,7 @@
                         <div class="column-title"> 
                         </div> 
                             
-                            <div class="container" style="width: 250%;margin-left: 10em">
+                            <div class="container" style="width: 250%;margin-left: 7em">
                                 <canvas id="myChart" style="width:10;height: 5;"></canvas>
                             </div>
                     
