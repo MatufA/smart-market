@@ -47,7 +47,7 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
                 for(var j = startSet; j < endSet; j++){
                     dataForset[j] = price[j]
                 }
-                var color = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )';
+                var color = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.9 )';
                 dataset.push(
                     { 
                         data: dataForset,
@@ -69,7 +69,7 @@ exports.makeGraphOfPricesInNetworks = (req, res) => {
                     for(var j = startSet; j < endSet; j++){
                         dataForset[j] = price[j]
                     }
-                    var color = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )';
+                    var color = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.9 )';
                     dataset.push(
                         { 
                             data: dataForset,
@@ -105,7 +105,7 @@ exports.makeGraphOfPurchaseVolume = (req, res) =>{
             var dataForset_first = []
             dataForset_first.push(data.first[element])
             dataForset_first.push(data.second[element])
-            var color = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )';
+            var color = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.9 )';
             dataset_first.push(
                 { 
                     label: element,
@@ -129,6 +129,10 @@ exports.makeGraphAssociation = (req, res) =>{
         
         mongoHandler.getFromMongoTobigMl(result, filePath)
         bigmlHandler.makeAssociationWithMongo(filePath);
+    })
+
+    redisHandler.getGroceries(function(gros){
+        res.render('graph4.ejs', {gros : gros})
     })
 }
 
