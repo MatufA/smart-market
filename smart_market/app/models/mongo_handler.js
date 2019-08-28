@@ -1,4 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
+const fs = require('fs')
 
 var db = MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true  }, (err, database) => {
             if (err) return console.log(err)  
@@ -147,4 +148,35 @@ module.exports.getProductCountBetweenDates = async function (from_date_first, to
         })
     })
     callback(data_view, lables)
+}
+
+module.exports.getFromMongoTobigMl = async(lables, filePath) =>{
+    const promises = lables.map(async coll => {
+        let collection = await getCollection(coll)
+        return collection
+    })
+    const collections = await Promise.all(promises)
+
+    if (!Array.isArray(collections) || !collections.length)
+        throw new Error('Empty list')
+
+    var toBigMl = []
+    collections.forEach(elements =>{
+        elements.forEach(element => {
+            
+            element.gros.forEach(prod => { 
+                toBigMl.push(
+                    {
+                        name: element.name,
+                        date: element.date,
+                        id: element.id,
+                        product_name: prod.product_name, 
+                        price: prod.price
+                    }
+                )
+            })
+        })
+    })
+
+    fs.writeFileSync(filePath, JSON.stringify(toBigMl)); 
 }

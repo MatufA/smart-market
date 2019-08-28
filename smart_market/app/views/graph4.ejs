@@ -240,34 +240,10 @@
                     <div id="column2"> 
                         <div class="column-title"> 
                         </div> 
-
-                            <div class="container" style="width: 250%;margin-left: 7em">
-                                <canvas id="myChart" style="width:10;height: 5;"></canvas>
+                            <div>
+                                    <iframe src="https://bigml.com/embedded/association/60sO0XudxHwXc4yskJhskE1x17c" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen" width="960" height="660"></iframe>
                             </div>
-                    
-                            <script>
-                                    var dataView = <%-JSON.stringify(collInfos)%>;
-                                    var dataLabels = <%-JSON.stringify(labels)%>;
-                                    var groceries = <%-JSON.stringify(gros)%>;
-                                    
-                                    var ctx = document.getElementById('myChart').getContext('2d');
-                                    var myChart = new Chart(ctx, {
-                                        type: 'bar',
-                                        data: {
-                                            labels: dataLabels,
-                                            datasets: [dataView]
-                                        },
-                                        options: {
-                                            scales: {
-                                                yAxes: [{
-                                                    ticks: {
-                                                        beginAtZero: true
-                                                    }
-                                                }]
-                                            }
-                                        }
-                                    });
-                                </script>
+                            
                     
 
                     </div>  
