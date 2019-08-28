@@ -1,5 +1,6 @@
 const mongoHandler = require('../models/mongo_handler')
 const redisHandler = require('../models/redis_handler')
+const bigmlHandler = require('../models/bigml_handler')
 
 exports.makeChart = (req, res) => {
     var labels = mongoHandler.getLabels()
@@ -11,7 +12,7 @@ exports.makeChart = (req, res) => {
             var back = []
             // random colors for chart
             for(var i = 0; i < view.data.length; i++){
-                var backbackgd = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )'
+                var backbackgd = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.9 )'
                 back.push(backbackgd)
             }
             view.backgroundColor = back
@@ -122,26 +123,13 @@ exports.makeGraphOfPurchaseVolume = (req, res) =>{
 }
 
 exports.makeGraphAssociation = (req, res) =>{
-    var labels = mongoHandler.getLabels()
+    var labels = mongoHandler.getLabels();
     labels.then(function(result){
-        var dataView = mongoHandler.makeMainChart(result)
+        let filePath = __dirname + "/dataset.json";
         
-        dataView.then(function(view){
-            
-            var back = []
-            // random colors for chart
-            for(var i = 0; i < view.data.length; i++){
-                var backbackgd = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )'
-                back.push(backbackgd)
-            }
-            view.backgroundColor = back
-            view.borderColor = back
-            view.label = 'Testinggggg'
-  
-            redisHandler.getGroceries(function(gros){
-              res.render('graph4', {collInfos: view, labels: result, gros : gros})
-            })
-            
-        })
+        mongoHandler.getFromMongoTobigMl(result, filePath)
+        bigmlHandler.makeAssociationWithMongo(filePath);
     })
 }
+
+
