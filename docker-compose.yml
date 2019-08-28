@@ -1,55 +1,33 @@
-version: "3"
-
+version: '2'
 services:
-  namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop3.1.1-java8
-    container_name: namenode
+  cloudera:
+    image: cloudera/quickstart:latest
+    privileged: true
+    hostname: quickstart.cloudera
+    command: /usr/bin/docker-quickstart
     ports:
-      - 9870:9870
-    volumes:
-      - hadoop_namenode:/hadoop/dfs/name
-    environment:
-      - CLUSTER_NAME=test
-    env_file:
-      - ./hadoop.env
-
-  datanode:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop3.1.1-java8
-    container_name: datanode
-    volumes:
-      - hadoop_datanode:/hadoop/dfs/data
-    environment:
-      SERVICE_PRECONDITION: "namenode:9870"
-    env_file:
-      - ./hadoop.env
-  
-  resourcemanager:
-    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.1.1-java8
-    container_name: resourcemanager
-    environment:
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864"
-    env_file:
-      - ./hadoop.env
-
-  nodemanager1:
-    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.1.1-java8
-    container_name: nodemanager
-    environment:
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 resourcemanager:8088"
-    env_file:
-      - ./hadoop.env
-  
-  historyserver:
-    image: bde2020/hadoop-historyserver:2.0.0-hadoop3.1.1-java8
-    container_name: historyserver
-    environment:
-      SERVICE_PRECONDITION: "namenode:9870 datanode:9864 resourcemanager:8088"
-    volumes:
-      - hadoop_historyserver:/hadoop/yarn/timeline
-    env_file:
-      - ./hadoop.env
-  
-volumes:
-  hadoop_namenode:
-  hadoop_datanode:
-  hadoop_historyserver:
+      - "8020:8020"   # HDFS 
+      - "8022:22"     # SSH
+      - "7180:7180"   # Cloudera Manager
+      - "8888:8888"   # Hue
+      - "11000:11000" # Oozie
+      - "50070:50070" # HDFS Rest Namenode
+      - "50075:50075" # HDFS Rest Datanode
+      - "2181:2181"   # Zookeeper
+      - "8088:8088"   # YARN Resource Manager
+      - "19888:19888" # MapReduce Job History
+      - "50030:50030" # MapReduce Job Tracker
+      - "8983:8983"   # Solr
+      - "16000:16000" # Sqoop Metastore
+      - "8042:8042"   # YARN Node Manager
+      - "60010:60010" # HBase Master
+      - "60030:60030" # HBase Region
+      - "9090:9090"   # HBase Thrift
+      - "8080:8080"   # HBase Rest
+      - "7077:7077"   # Spark Master
+      - "18080:18080" # Spark History 
+      - "9092:9092"   # Kafka
+    tty: true
+    stdin_open: true
+    volumes: 
+      - /var/shared_cloudera_quickstart:/media/shared_from_local

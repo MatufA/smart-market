@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const bodyParser = require('body-parser')
 const logger = require('../services/middlewareLogger')
-const hdfs = require('../services/hdfs')
+const dbHandler = require('../services/db-handler')
 const fs = require('fs')
 const multer = require('multer')
 const path = require('path')
@@ -29,16 +29,18 @@ var upload = multer({ storage: storage })
 // Uploading multiple files - files are stored in req.files
 router.post('/upload', upload.array('myFiles', 12), (req, res, next) => {
   const files = req.files
+
   if (!files) {
     const error = new Error('Please choose files')
     error.httpStatusCode = 400
     return next(error)
   }
+
   // Files are transferred to hdfs datalake
-  for (const file of files){
-    hdfs.create('benchmarks', file.path, file.filename)
-  }
-  res.redirect('http://localhost:3000/')
+  for (const file of files)
+    dbHandler.uploadReciptToDB(file)
+  
+  res.redirect('http://localhost:8090/graph')
 })
 
 module.exports = router
