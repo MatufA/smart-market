@@ -41,3 +41,6 @@ module.exports.getAssociation = function(resource){
     })
 }
 
+module.exports.makeAssociationWithMongo = function(resource){
+    
+}
