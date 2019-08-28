@@ -1,6 +1,6 @@
 module.exports =  {
     protocol: "http://",
     host:"localhost",
-    port: 50070,
+    port: 9870,
     path: "/webhdfs/v1/"
 }

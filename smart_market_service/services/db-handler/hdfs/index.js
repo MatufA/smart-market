@@ -21,8 +21,11 @@ module.exports.listDir = function(dirPath){
     })
 }
 
-module.exports.mkDir = function(path,dirName, perm='777'){
-    const fullUrl = hdfsUrl(path + '/' + dirName)
+module.exports.mkDir = function(path, dirName, perm='777'){
+    if(path == null)
+        path = "data"
+    let fullPath = path + '/' + dirName
+    const fullUrl = hdfsUrl(fullPath)
     const options = { 
         method: 'PUT',
         url: fullUrl,
@@ -33,6 +36,7 @@ module.exports.mkDir = function(path,dirName, perm='777'){
     request(options, function (error, response, body) {
         if (error) throw new Error(error)
     })
+    return fullPath
 }
 
 module.exports.create= function(pathDir, file, fileName){
@@ -47,6 +51,8 @@ module.exports.create= function(pathDir, file, fileName){
     request(options, function (error, response, body) {
         if (error) throw new Error(error)
         let url_parts = urlParse.parse(response.headers.location, true)
+        console.log(response)
+        console.log(url_parts)
         
         let optionsSec = { 
             method: 'PUT',
@@ -57,7 +63,7 @@ module.exports.create= function(pathDir, file, fileName){
             headers: { 'cache-control': 'no-cache',
                 'content-type': 'application/octet-stream' } 
             }
-
+        console.log(optionsSec)
         fs.createReadStream(file)
         .pipe(request(optionsSec))
         .on('response', function(response) {
