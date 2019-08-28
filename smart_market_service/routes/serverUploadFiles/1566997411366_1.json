@@ -1,0 +1,26 @@
+{
+    "id":62448652,
+    "name":"Mega Bair",
+    "date":"9/6/2019",
+    "address":"Ibn Gabirol 30 Tel-Aviv",
+    "phone":"03-6093257",
+    "number_of_items": 13,
+    "pos_number": "008",
+    "cashier_name": "Natalia",
+    "gros":[
+
+        { "product_name":"Ski 5%", "price": 4.75},
+        { "product_name":"Milk 3%", "price": 5.94},
+        { "product_name":"Parmezanh Cheese - 200gr", "price": 21.5},
+        { "product_name":"Sesame Rolls - 6 Pack", "price": 11.9},
+        { "product_name":"Eggs L - 12 Units" , "price":11.3},
+        { "product_name":"Tommatos - 1KG" , "price":4.29},
+        { "product_name":"Eggplant - 1KG", "price": 9.9},
+        { "product_name":"Cucumber - 1KG", "price": 4.9},
+        { "product_name":"Watermelom - 1KG", "price": 3.5},
+        { "product_name":"Red Onion - 1KG", "price": 4.49},
+        { "product_name":"Fairy Clean Liquid - 650gr", "price": 9.99},
+        { "product_name":"Shampoo Neka7 - 750 gr", "price": 10.9},
+        { "product_name":"Turkish Coffee - 100gr", "price": 9.29}
+    ]
+}

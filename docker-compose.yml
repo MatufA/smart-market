@@ -23,10 +23,7 @@ services:
       - "60010:60010" # HBase Master
       - "60030:60030" # HBase Region
       - "9090:9090"   # HBase Thrift
-      - "8080:8080"   # HBase Rest
-      - "7077:7077"   # Spark Master
-      - "18080:18080" # Spark History 
-      - "9092:9092"   # Kafka
+      - "8080:8080"   # HBase Rest 
     tty: true
     stdin_open: true
     volumes: 

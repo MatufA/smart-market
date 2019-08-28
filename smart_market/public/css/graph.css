@@ -7,3 +7,13 @@ body, html {height: 100%}
   background-position: center;
   background-size: cover;
 }
+button {
+  border-radius: 12px;
+}
+input[type=submit] {
+  border: 1px solid #777;
+  border-radius: 12px;
+}input[type=file] {
+  border: 1px solid #777;
+  border-radius: 12px;
+}
