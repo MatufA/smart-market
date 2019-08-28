@@ -120,3 +120,28 @@ exports.makeGraphOfPurchaseVolume = (req, res) =>{
         })
     })
 }
+
+exports.makeGraphAssociation = (req, res) =>{
+    var labels = mongoHandler.getLabels()
+    labels.then(function(result){
+        var dataView = mongoHandler.makeMainChart(result)
+        
+        dataView.then(function(view){
+            
+            var back = []
+            // random colors for chart
+            for(var i = 0; i < view.data.length; i++){
+                var backbackgd = 'rgb(' + Math.floor(Math.random() * 255) +',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +', 0.5 )'
+                back.push(backbackgd)
+            }
+            view.backgroundColor = back
+            view.borderColor = back
+            view.label = 'Testinggggg'
+  
+            redisHandler.getGroceries(function(gros){
+              res.render('graph4', {collInfos: view, labels: result, gros : gros})
+            })
+            
+        })
+    })
+}

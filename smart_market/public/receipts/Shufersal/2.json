@@ -1,0 +1,32 @@
+{
+    "id":252388445,
+    "name":"Shufersal",
+    "date":"7/6/2019",
+    "address":"Yigal Alon 76 Tel-Aviv",
+    "phone":"03-5628471",
+    "number_of_items": 19,
+    "pos_number": "001",
+    "cashier_name": "Lior",
+    "gros":[
+        { "product_name":"Butter - 200gr", "price": 5.25},
+        { "product_name":"Turkish Coffee - 100gr", "price": 8.79},
+        { "product_name":"Red Onion - 1KG", "price": 4.75},
+        { "product_name":"Eggs M - 12 Units", "price": 10.4},
+        { "product_name": "Shnitzel - 1KG", "price":41.90},
+        { "product_name":"Tommatos - 1KG", "price": 3.9},
+        { "product_name":"Cucumber - 1KG", "price": 4.5},
+        { "product_name":"Pita Bread - 13 Units", "price": 9.9},
+        { "product_name":"Salmon - 1KG", "price": 189},
+        { "product_name":"Potato - 1KG", "price": 5.9},
+        { "product_name":"Sweet Potato - 1KG", "price": 10.99},
+        { "product_name":"Gamla Marlo Red Wine", "price": 54.9},
+        { "product_name":"Challah Bread", "price": 5.17},
+        { "product_name":"Olive Oil - 750gr", "price": 32.9},
+        { "product_name":"Eggplant - 1KG", "price": 8.9},
+        { "product_name":"Tahene El Erez - 500gr", "price": 14.9},
+        { "product_name":"Hummus Ahla - 750gr", "price": 11.9},
+        { "product_name":"Basmati Rice - 1KG", "price": 13.9},
+        { "product_name":"Napoleaon Cake - 600gr", "price": 38.9},
+        { "product_name":"Green Grapes - 1KG", "price": 28.9}
+    ]
+}

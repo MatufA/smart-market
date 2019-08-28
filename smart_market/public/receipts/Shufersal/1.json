@@ -1,0 +1,25 @@
+{
+    "id":224994132,
+    "name":"Shufersal",
+    "date":"1/6/2019",
+    "address":"Yigal Alon 76 Tel-Aviv",
+    "phone":"03-5628471",
+    "number_of_items": 12,
+    "pos_number": "002",
+    "cashier_name": "Dan",
+    "gros":[
+        { "product_name":"Ski 5%", "price": 4.75},
+        { "product_name":"Milk 3%", "price": 5.94},
+        { "product_name":"Sesame Rolls - 6 Pack", "price": 10.9},
+        { "product_name":"Eggs L - 12 Units", "price": 11.3},
+        { "product_name":"Toilet Paper - 32 Units", "price": 29.9},
+        { "product_name":"Shampoo Neka7 - 750 gr", "price": 8.9},
+        { "product_name":"Shoghi Cornflakes - 500gr", "price": 21.9},
+        { "product_name":"Turkish Coffee - 100gr", "price": 8.79},
+        { "product_name":"Nutella - 750gr", "price": 26.9},
+        { "product_name":"Basmati Rice - 1KG", "price": 13.9},
+        { "product_name":"Potato - 1KG", "price": 5.35},
+        { "product_name":"Tommatos - 1KG", "price": 2.49},
+        { "product_name":"Goldstar Beer - 6 Units", "price": 34.9}
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "id": 74816953,
+    "name":"Shufersal",
+    "date": "24/7/2019",
+    "address":"Yigal Alon 76 Tel-Aviv",
+    "phone":"03-5628471",
+    "number_of_items": 16,
+    "pos_number": "004",
+    "cashier_name": "Sofia",
+    "gros":[      
+        { "product_name": "Turkish Coffee - 100gr", "price":6.99},
+        { "product_name": "Milk 3%", "price":5.94},
+        { "product_name": "Parmezanh Cheese - 200gr", "price":21.9},
+        { "product_name": "Sesame Rolls - 6 Pack", "price":13.49},
+        { "product_name": "Eggs L - 12 Units", "price":11.3},
+        { "product_name": "Toilet Paper - 32 Units", "price":36.9},
+        { "product_name": "Tommatos - 1KG", "price":4.59},
+        { "product_name": "Cucumber - 1KG", "price":4.99},
+        { "product_name": "Watermelom - 1KG", "price":4.69},
+        { "product_name": "Shoghi Cornflakes - 500gr", "price":23.90},
+        { "product_name": "Red Onion - 1KG", "price":5.29},
+        { "product_name": "Gamla Marlo Red Wine", "price":51.9},
+        { "product_name": "Hummus Ahla - 750gr", "price":12.49},
+        { "product_name":"Eggplant - 1KG", "price": 9.9},
+        { "product_name": "Tuna Starkist - 4 Units", "price":23.49},
+        { "product_name": "Pita Bread - 13 Units", "price":9.99},
+        { "product_name": "Butter - 200gr", "price":5.25}
+    ]
+}

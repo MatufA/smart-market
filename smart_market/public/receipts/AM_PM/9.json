@@ -1,0 +1,37 @@
+{
+    "id": 14211576,
+    "name": "AM:PM",
+    "date": "9/8/2019",
+    "address":"Ibn Gabirol 14 Tel-Aviv",
+    "phone":"073-2292308",
+    "number_of_items": 23,
+    "pos_number": "001",
+    "cashier_name": "Avi",
+    "gros":[      
+        { "product_name": "Minced Meat - 1KG", "price":59.99},
+        { "product_name": "Shnitzel - 1KG", "price":38.99},
+        { "product_name": "Breadcrumbs - 100gr", "price":14.49},
+        { "product_name": "Milk 3%", "price":5.94},
+        { "product_name": "Sesame Rolls - 6 Pack", "price":13.49},
+        { "product_name": "Pita Bread - 13 Units", "price":10.9},
+        { "product_name": "Eggs L - 12 Units", "price":11.3},
+        { "product_name": "Toilet Paper - 32 Units", "price":37.9},
+        { "product_name": "Tommatos - 1KG", "price":3.99},
+        { "product_name": "Cucumber - 1KG", "price":4.99},
+        { "product_name": "Watermelom - 1KG", "price":4.29},
+        { "product_name": "Red Onion - 1KG", "price":4.89},
+        { "product_name": "Challah Bread", "price":4.49},
+        { "product_name": "Turkish Coffee - 100gr", "price":8.99},
+        { "product_name": "Butter - 200gr", "price":5.25},
+        { "product_name": "Para Chooclate", "price":5.79},
+        { "product_name":"Eggplant - 1KG", "price": 10.9},
+        { "product_name": "Ricotta Cheese - 200gr", "price":11.99},
+        { "product_name": "Nutella - 750gr", "price":23.99},
+        { "product_name": "Carrot  - 1KG", "price":4.99},
+        { "product_name": "Cotton Sticks Ear Cleaning - 100 Units", "price":3.99},
+        { "product_name": "Napoleaon Cake - 600gr", "price":31.99},
+        { "product_name": "Napoleaon Cream Cheese - 225gr", "price":13.99},
+        { "product_name": "Lettuce", "price":5.99}
+
+    ]
+}

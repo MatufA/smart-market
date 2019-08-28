@@ -29,5 +29,5 @@ module.exports = function (app, passport) {
 
     app.post('/graph3', home.loggedIn, charts.makeGraphOfPurchaseVolume);
 
-    
+    app.post('/graph4', home.loggedIn, charts.makeGraphAssociation);
 }
