@@ -35,7 +35,7 @@
     "fs-extra": "latest",
     "glob": "^7.1.4",
     "json-server": "^0.15.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "md5": "latest",
     "mime": "latest",
     "mongodb": "^3.3.0-beta2",
