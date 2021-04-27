@@ -47,7 +47,7 @@
     "passport": "latest",
     "passport-local": "latest",
     "pm2": "latest",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "request": "latest",
     "serve-favicon": "^2.5.0",
     "simple-encryptor": "latest",
